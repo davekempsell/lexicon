@@ -48,24 +48,30 @@ body {
   font-size: 2.4rem;
 }
 
-.keyboard {
+.keyboard-container {
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  
 }
 
 .keyboard-top {
   margin-top: 20px;
   display: inline-grid;
   grid-template-columns: repeat(10, auto);
+  gap: 1px;
 }
 .keyboard-middle {
   margin: 2px;
   display: inline-grid;
   grid-template-columns: repeat(9, auto);
+  gap: 1px;
 }
 .keyboard-bottom {
   margin-bottom: 20px;
   display: inline-grid;
   grid-template-columns: repeat(9, auto);
+  gap: 1px;
 }
 
 .footer {
