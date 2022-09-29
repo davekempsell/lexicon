@@ -25,30 +25,31 @@ function App() {
   const submitGuess = () => {
     console.log(guessCounter)
     console.log(guesses)
-    if(guess.length === 5) {
+    let newGuess = guess.toUpperCase()
+    if(guess.length === 5 && /^[A-Z]+$/.test(newGuess)) {
       if(guessCounter < 1) {
-        setFirstGuess(guess)
-        setGuesses([...guesses, guess])
+        setFirstGuess(newGuess)
+        setGuesses([...guesses, newGuess])
         setGuessCounter(guessCounter + 1);
-      } else if(guessCounter === 1 && !guesses.includes(guess)) {
-        setSecondGuess(guess)
-        setGuesses([...guesses, guess])
+      } else if(guessCounter === 1 && !guesses.includes(newGuess)) {
+        setSecondGuess(newGuess)
+        setGuesses([...guesses, newGuess])
         setGuessCounter(guessCounter + 1);
-      } else if(guessCounter === 2 && !guesses.includes(guess)) {
-        setThirdGuess(guess)
-        setGuesses([...guesses, guess])
+      } else if(guessCounter === 2 && !guesses.includes(newGuess)) {
+        setThirdGuess(newGuess)
+        setGuesses([...guesses, newGuess])
         setGuessCounter(guessCounter + 1);
-      } else if(guessCounter === 3 && !guesses.includes(guess)) {
-        setFourthGuess(guess)
-        setGuesses([...guesses, guess])
+      } else if(guessCounter === 3 && !guesses.includes(newGuess)) {
+        setFourthGuess(newGuess)
+        setGuesses([...guesses, newGuess])
         setGuessCounter(guessCounter + 1);
-      } else if(guessCounter === 4 && !guesses.includes(guess)) {
-        setFifthGuess(guess)
-        setGuesses([...guesses, guess])
+      } else if(guessCounter === 4 && !guesses.includes(newGuess)) {
+        setFifthGuess(newGuess)
+        setGuesses([...guesses, newGuess])
         setGuessCounter(guessCounter + 1);
-      } else if(guessCounter === 5 && !guesses.includes(guess)) {
-        setSixthGuess(guess)
-        setGuesses([...guesses, guess])
+      } else if(guessCounter === 5 && !guesses.includes(newGuess)) {
+        setSixthGuess(newGuess)
+        setGuesses([...guesses, newGuess])
         setGuessCounter(guessCounter + 1);
       }
     }
