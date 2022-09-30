@@ -1,4 +1,4 @@
-export function KeyboardTop() {
+export function KeyboardTop(callback) {
 
   const keyValues = ['Q','W','E','R','T','Y','U','I','O','P']
 
@@ -10,7 +10,8 @@ export function KeyboardTop() {
             className="key-standard" 
             key={`keyboard-${index}`} 
             type="submit" 
-            value={letter}>
+            value={letter}
+            onClick={callback}>
               {letter}
             </button>
         )
@@ -19,7 +20,7 @@ export function KeyboardTop() {
   )
 }
 
-export function KeyboardMiddle() {
+export function KeyboardMiddle(callback) {
 
   const keyValues = ['A','S','D','F','G','H','J','K','L']
 
@@ -31,7 +32,8 @@ export function KeyboardMiddle() {
             className="key-standard" 
             key={`keyboard-${index}`} 
             type="submit" 
-            value={letter}>
+            value={letter}
+            onClick={callback}>
               {letter}
             </button>
         )
@@ -40,7 +42,7 @@ export function KeyboardMiddle() {
   )
 }
 
-export function KeyboardBottom() {
+export function KeyboardBottom(callback1, callback2, callback3) {
 
   const keyValues = ['Z','X','C','V','B','N','M']
   return (
@@ -49,7 +51,8 @@ export function KeyboardBottom() {
         className="key-action" 
         key={`keyboard-Ent`} 
         type="submit" 
-        value={'Ent'}>
+        value={'Ent'}
+        onClick={callback3}>
           Ent
       </button>
       {keyValues.map((letter, index) => {
@@ -58,7 +61,8 @@ export function KeyboardBottom() {
             className="key-standard" 
             key={`keyboard-${index}`} 
             type="submit" 
-            value={letter}>
+            value={letter}
+            onClick={callback1}>
               {letter}
             </button>
         )
@@ -67,7 +71,8 @@ export function KeyboardBottom() {
         className="key-action" 
         key={`keyboard-del`} 
         type="submit" 
-        value={'del'}>
+        value={'del'}
+        onClick={callback2}>
           del
       </button>
     </div>

@@ -1,4 +1,4 @@
-function EmptyGrid(line) {
+function EmptyGrid(line, guesses) {
 
   const boxArray = [1,2,3,4,5]
 
