@@ -28,6 +28,7 @@ function App() {
     let newGuess = guess.toUpperCase()
     if(
         winState == false
+        && guesses.length < 6
         && guess.length === 5
         && /^[A-Z]+$/.test(newGuess)
         && words.includes(guess.toLowerCase())
