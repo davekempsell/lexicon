@@ -25,6 +25,7 @@ function App() {
   }
 
   const submitGuess = () => {
+    console.log(TargetWord)
     let newGuess = guess.toUpperCase()
     if(
         winState === false
