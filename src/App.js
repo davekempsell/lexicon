@@ -5,29 +5,38 @@ import EmptyGrid from './components/emptyGrid';
 import { KeyboardTop, KeyboardMiddle, KeyboardBottom } from './components/keyboard';
 import words from './wordlists/allowedWords'
 import gridDisplay from './components/guessGrid'
+import TargetWord from "./wordlists/targetWord"
 
 function App() {
   const [guess, setGuess] = useState("")
   const [guesses, setGuesses]  = useState([])
   const [emptyGrids, setEmptyGrids] = useState([1,2,3,4,5,6])
+  const [winState, setWinState] = useState(false)
 
   const onChangeGuess = g => {
     const latestGuess = g.target.value;
     setGuess(latestGuess)
   }
 
+  const checkWin = (lastGuess) => {
+    if(lastGuess === TargetWord) {
+      setWinState(true)
+    }
+  }
+
   const submitGuess = () => {
     let newGuess = guess.toUpperCase()
     if(
-        guess.length === 5
+        winState == false
+        && guess.length === 5
         && /^[A-Z]+$/.test(newGuess)
         && words.includes(guess.toLowerCase())
         && !guesses.includes(newGuess)
       ) {
         setGuesses([...guesses, newGuess])
         setEmptyGrids(emptyGrids.slice(0,-1))
+        checkWin(newGuess)
         setGuess("")
-        console.log("allowed")
       }
     }
 
