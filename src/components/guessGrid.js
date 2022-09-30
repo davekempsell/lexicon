@@ -1,7 +1,7 @@
 import React from 'react'
 import TargetWord from "../wordlists/targetWord"
 
-function gridDisplay(line, guess) {
+function GuessGrid(line, guess) {
 
   let guessArray = guess.split("")
 
@@ -26,4 +26,4 @@ function gridDisplay(line, guess) {
   )
 } 
 
-export default gridDisplay
+export default GuessGrid

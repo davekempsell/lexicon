@@ -3,9 +3,8 @@ import './App.css'
 import Logo from './lexBrickLogo.png'
 import EmptyGrid from './components/emptyGrid';
 import { KeyboardTop, KeyboardMiddle, KeyboardBottom } from './components/keyboard';
-import gridDisplay from './components/guessGrid'
+import GuessGrid from './components/guessGrid'
 import TargetWord from "./wordlists/targetWord"
-import answerWords from './wordlists/targetWords'
 import allowedWords from './wordlists/allowedWords';
 
 function App() {
@@ -32,7 +31,7 @@ function App() {
         && guesses.length < 6
         && guess.length === 5
         && /^[A-Z]+$/.test(newGuess)
-        && (allowedWords.includes(guess.toLowerCase()) )
+        && (allowedWords.includes(guess.toLowerCase()))
         && !guesses.includes(newGuess)
       ) {
         setGuesses([...guesses, newGuess])
@@ -49,7 +48,7 @@ function App() {
         <h1>LEXICON</h1>
       </div>
         {guesses.map((guess, index) => {
-        return gridDisplay(index, guess)
+        return GuessGrid(index, guess)
         })}
         {emptyGrids.map(n => {
           return EmptyGrid(n)
