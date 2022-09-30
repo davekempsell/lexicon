@@ -1,4 +1,4 @@
-[
+const words = [
   'aback', 'abase', 'abate', 'abbey', 'abbot', 'abhor',
   'abide', 'abled', 'abode', 'abort', 'about', 'above',
   'abuse', 'abyss', 'acorn', 'acrid', 'actor', 'acute',
@@ -13,9 +13,7 @@
   'alter', 'amass', 'amaze', 'amber', 'amble', 'amend',
   'amiss', 'amity', 'among', 'ample', 'amply', 'amuse',
   'angel', 'anger', 'angle', 'angry', 'angst', 'anime',
-  'ankle', 'annex', 'annoy'
-]
-[
+  'ankle', 'annex', 'annoy',
   'annul', 'anode', 'antic', 'anvil', 'aorta',
   'apart', 'aphid', 'aping', 'apnea', 'apple',
   'apply', 'apron', 'aptly', 'arbor', 'ardor',
@@ -26,9 +24,7 @@
   'audit', 'augur', 'aunty', 'avail', 'avert',
   'avian', 'avoid', 'await', 'awake', 'award',
   'aware', 'awash', 'awful', 'awoke', 'axial',
-  'axiom', 'axion', 'azure'
-]
-[
+  'axiom', 'axion', 'azure',
   'bacon', 'badge', 'badly', 'bagel', 'baggy', 'baker',
   'baler', 'balmy', 'banal', 'banjo', 'barge', 'baron',
   'basal', 'basic', 'basil', 'basin', 'basis', 'baste',
@@ -44,9 +40,7 @@
   'bleat', 'bleed', 'bleep', 'blend', 'bless', 'blimp',
   'blind', 'blink', 'bliss', 'blitz', 'bloat', 'block',
   'bloke', 'blond', 'blood', 'bloom', 'blown', 'bluer',
-  'bluff', 'blunt', 'blurb', 'blurt', 'blush', 'board'
-]
-[
+  'bluff', 'blunt', 'blurb', 'blurt', 'blush', 'board',
   'boast', 'bobby', 'boney', 'bongo', 'bonus', 'booby',
   'boost', 'booth', 'booty', 'booze', 'boozy', 'borax',
   'borne', 'bosom', 'bossy', 'botch', 'bough', 'boule',
@@ -59,9 +53,7 @@
   'brush', 'brute', 'buddy', 'budge', 'buggy', 'bugle',
   'build', 'built', 'bulge', 'bulky', 'bully', 'bunch',
   'bunny', 'burly', 'burnt', 'burst', 'bused', 'bushy',
-  'butch', 'butte', 'buxom', 'buyer', 'bylaw'
-]
-[
+  'butch', 'butte', 'buxom', 'buyer', 'bylaw',
   'cabal', 'cabby', 'cabin', 'cable', 'cacao', 'cache',
   'cacti', 'caddy', 'cadet', 'cagey', 'cairn', 'camel',
   'cameo', 'canal', 'candy', 'canny', 'canoe', 'canon',
@@ -77,9 +69,7 @@
   'chunk', 'churn', 'chute', 'cider', 'cigar', 'cinch',
   'circa', 'civic', 'civil', 'clack', 'claim', 'clamp',
   'clang', 'clank', 'clash', 'clasp', 'class', 'clean',
-  'clear', 'cleat', 'cleft', 'clerk'
-]
-[
+  'clear', 'cleat', 'cleft', 'clerk',
   'click', 'cliff', 'climb', 'cling', 'clink', 'cloak',
   'clock', 'clone', 'close', 'cloth', 'cloud', 'clout',
   'clove', 'clown', 'cluck', 'clued', 'clump', 'clung',
@@ -95,16 +85,12 @@
   'crier', 'crime', 'crimp', 'crisp', 'croak', 'crock',
   'crone', 'crony', 'crook', 'cross', 'croup', 'crowd',
   'crown', 'crude', 'cruel', 'crumb', 'crump', 'crush',
-  'crust', 'crypt', 'cubic', 'cumin', 'curio'
-]
-[
+  'crust', 'crypt', 'cubic', 'cumin', 'curio',
   'curly', 'curry',
   'curse', 'curve',
   'curvy', 'cutie',
   'cyber', 'cycle',
-  'cynic'
-]
-[
+  'cynic',
   'daddy', 'daily', 'dairy', 'daisy', 'dally', 'dance',
   'dandy', 'datum', 'daunt', 'dealt', 'death', 'debar',
   'debit', 'debug', 'debut', 'decal', 'decay', 'decor',
@@ -120,17 +106,13 @@
   'drama', 'drank', 'drape', 'drawl', 'drawn', 'dread',
   'dream', 'dress', 'dried', 'drier', 'drift', 'drill',
   'drink', 'drive', 'droit', 'droll', 'drone', 'drool',
-  'droop', 'dross', 'drove'
-]
-[
+  'droop', 'dross', 'drove',
   'drown', 'druid', 'drunk',
   'dryer', 'dryly', 'duchy',
   'dully', 'dummy', 'dumpy',
   'dunce', 'dusky', 'dusty',
   'dutch', 'duvet', 'dwarf',
-  'dwell', 'dwelt', 'dying'
-]
-[
+  'dwell', 'dwelt', 'dying',
   'eager', 'eagle', 'early', 'earth', 'easel',
   'eaten', 'eater', 'ebony', 'eclat', 'edict',
   'edify', 'eerie', 'egret', 'eight', 'eject',
@@ -145,9 +127,7 @@
   'etude', 'evade', 'event', 'every', 'evict',
   'evoke', 'exact', 'exalt', 'excel', 'exert',
   'exile', 'exist', 'expel', 'extol', 'extra',
-  'exult', 'eying'
-]
-[
+  'exult', 'eying',
   'fable', 'facet', 'faint', 'fairy', 'faith', 'false', 'fancy',
   'fanny', 'farce', 'fatal', 'fatty', 'fault', 'fauna', 'favor',
   'feast', 'fecal', 'feign', 'fella', 'felon', 'femme', 'femur',
@@ -162,9 +142,7 @@
   'flown', 'fluff', 'fluid', 'fluke', 'flume', 'flung', 'flunk',
   'flush', 'flute', 'flyer', 'foamy', 'focal', 'focus', 'foggy',
   'foist', 'folio', 'folly', 'foray', 'force', 'forge', 'forgo',
-  'forte', 'forth'
-]
-[
+  'forte', 'forth',
   'forty', 'forum', 'found',
   'foyer', 'frail', 'frame', 'frank',
   'fraud', 'freak', 'freed', 'freer',
@@ -173,9 +151,7 @@
   'front', 'frost', 'froth', 'frown',
   'froze', 'fruit', 'fudge', 'fugue',
   'fully', 'fungi', 'funky', 'funny',
-  'furor', 'furry', 'fussy', 'fuzzy'
-]
-[
+  'furor', 'furry', 'fussy', 'fuzzy',
   'gaffe', 'gaily', 'gamer', 'gamma', 'gamut', 'gassy',
   'gaudy', 'gauge', 'gaunt', 'gauze', 'gavel', 'gawky',
   'gayer', 'gayly', 'gazer', 'gecko', 'geeky', 'geese',
@@ -188,9 +164,7 @@
   'gooey', 'goofy', 'goose', 'gorge', 'gouge', 'gourd',
   'grace', 'grade', 'graft', 'grail', 'grain', 'grand',
   'grant', 'grape', 'graph', 'grasp', 'grass', 'grate',
-  'grave', 'gravy', 'graze', 'great', 'greed'
-]
-[
+  'grave', 'gravy', 'graze', 'great', 'greed',
   'green', 'greet', 'grief', 'grill',
   'grime', 'grimy', 'grind', 'gripe',
   'groan', 'groin', 'groom', 'grope',
@@ -200,9 +174,7 @@
   'guest', 'guide', 'guild', 'guile',
   'guilt', 'guise', 'gulch', 'gully',
   'gumbo', 'gummy', 'guppy', 'gusto',
-  'gusty', 'gypsy'
-]
-[
+  'gusty', 'gypsy',
   'habit', 'hairy', 'halve', 'handy', 'happy',
   'hardy', 'harem', 'harpy', 'harry', 'harsh',
   'haste', 'hasty', 'hatch', 'hater', 'haunt',
@@ -216,9 +188,7 @@
   'house', 'hovel', 'hover', 'howdy', 'human',
   'humid', 'humor', 'humph', 'humus', 'hunch',
   'hunky', 'hurry', 'husky', 'hussy', 'hutch',
-  'hydro', 'hyena', 'hymen', 'hyper'
-]
-[
+  'hydro', 'hyena', 'hymen', 'hyper',
   'icily', 'icing', 'ideal', 'idiom',
   'idiot', 'idler', 'idyll', 'igloo',
   'iliac', 'image', 'imbue', 'impel',
@@ -227,27 +197,21 @@
   'ingot', 'inlay', 'inlet', 'inner',
   'input', 'inter', 'intro', 'ionic',
   'irate', 'irony', 'islet', 'issue',
-  'itchy', 'ivory'
-]
-[
+  'itchy', 'ivory',
   'jaunt', 'jazzy', 'jelly',
   'jerky', 'jetty', 'jewel',
   'jiffy', 'joint', 'joist',
   'joker', 'jolly', 'joust',
   'judge', 'juice', 'juicy',
   'jumbo', 'jumpy', 'junta',
-  'junto', 'juror'
-]
-[
+  'junto', 'juror',
   'kappa', 'karma', 'kayak',
   'kebab', 'khaki', 'kinky',
   'kiosk', 'kitty', 'knack',
   'knave', 'knead', 'kneed',
   'kneel', 'knelt', 'knife',
   'knock', 'knoll', 'known',
-  'koala', 'krill'
-]
-[
+  'koala', 'krill',
   'label', 'labor', 'laden', 'ladle', 'lager', 'lance',
   'lanky', 'lapel', 'lapse', 'large', 'larva', 'lasso',
   'latch', 'later', 'lathe', 'latte', 'laugh', 'layer',
@@ -262,9 +226,7 @@
   'loser', 'louse', 'lousy', 'lover', 'lower', 'lowly',
   'loyal', 'lucid', 'lucky', 'lumen', 'lumpy', 'lunar',
   'lunch', 'lunge', 'lupus', 'lurch', 'lurid', 'lusty',
-  'lying', 'lymph', 'lyric'
-]
-[
+  'lying', 'lymph', 'lyric',
   'macaw', 'macho', 'macro', 'madam', 'madly',
   'mafia', 'magic', 'magma', 'maize', 'major',
   'maker', 'mambo', 'mamma', 'mammy', 'manga',
@@ -279,9 +241,7 @@
   'mimic', 'mince', 'miner', 'minim', 'minor',
   'minty', 'minus', 'mirth', 'miser', 'missy',
   'mocha', 'modal', 'model', 'modem', 'mogul',
-  'moist', 'molar'
-]
-[
+  'moist', 'molar',
   'moldy', 'money', 'month', 'moody',
   'moose', 'moral', 'moron', 'morph',
   'mossy', 'motel', 'motif', 'motor',
@@ -290,9 +250,7 @@
   'movie', 'mower', 'mucky', 'mucus',
   'muddy', 'mulch', 'mummy', 'munch',
   'mural', 'murky', 'mushy', 'music',
-  'musky', 'musty', 'myrrh'
-]
-[
+  'musky', 'musty', 'myrrh',
   'nadir', 'naive', 'nanny', 'nasal',
   'nasty', 'natal', 'naval', 'navel',
   'needy', 'neigh', 'nerdy', 'nerve',
@@ -302,9 +260,7 @@
   'noise', 'noisy', 'nomad', 'noose',
   'north', 'nosey', 'notch', 'novel',
   'nudge', 'nurse', 'nutty', 'nylon',
-  'nymph'
-]
-[
+  'nymph',
   'oaken', 'obese', 'occur', 'ocean',
   'octal', 'octet', 'odder', 'oddly',
   'offal', 'offer', 'often', 'olden',
@@ -315,9 +271,7 @@
   'ounce', 'outdo', 'outer', 'outgo',
   'ovary', 'ovate', 'overt', 'ovine',
   'ovoid', 'owing', 'owner', 'oxide',
-  'ozone'
-]
-[
+  'ozone',
   'paddy', 'pagan', 'paint', 'paler', 'palsy', 'panel',
   'panic', 'pansy', 'papal', 'paper', 'parer', 'parka',
   'parry', 'parse', 'party', 'pasta', 'paste', 'pasty',
@@ -331,9 +285,7 @@
   'pixel', 'pixie', 'pizza', 'place', 'plaid', 'plain',
   'plait', 'plane', 'plank', 'plant', 'plate', 'plaza',
   'plead', 'pleat', 'plied', 'plier', 'pluck', 'plumb',
-  'plume', 'plump'
-]
-[
+  'plume', 'plump',
   'plunk', 'plush', 'poesy', 'point', 'poise',
   'poker', 'polar', 'polka', 'polyp', 'pooch',
   'poppy', 'porch', 'poser', 'posit', 'posse',
@@ -346,9 +298,7 @@
   'psalm', 'pubic', 'pudgy', 'puffy', 'pulpy',
   'pulse', 'punch', 'pupil', 'puppy', 'puree',
   'purer', 'purge', 'purse', 'pushy', 'putty',
-  'pygmy'
-]
-[
+  'pygmy',
   'quack', 'quail', 'quake',
   'qualm', 'quark', 'quart',
   'quash', 'quasi', 'queen',
@@ -356,9 +306,7 @@
   'quest', 'queue', 'quick',
   'quiet', 'quill', 'quilt',
   'quirk', 'quite', 'quota',
-  'quote', 'quoth'
-]
-[
+  'quote', 'quoth',
   'rabbi', 'rabid', 'racer', 'radar', 'radii', 'radio',
   'rainy', 'raise', 'rajah', 'rally', 'ralph', 'ramen',
   'ranch', 'randy', 'range', 'rapid', 'rarer', 'raspy',
@@ -372,9 +320,7 @@
   'rhyme', 'rider', 'ridge', 'rifle', 'right', 'rigid',
   'rigor', 'rinse', 'ripen', 'riper', 'risen', 'riser',
   'risky', 'rival', 'river', 'rivet', 'roach', 'roast',
-  'robin', 'robot', 'rocky'
-]
-[
+  'robin', 'robot', 'rocky',
   'rodeo', 'roger', 'rogue',
   'roomy', 'roost', 'rotor',
   'rouge', 'rough', 'round',
@@ -382,9 +328,7 @@
   'rowdy', 'rower', 'royal',
   'ruddy', 'ruder', 'rugby',
   'ruler', 'rumba', 'rumor',
-  'rupee', 'rural', 'rusty'
-]
-[
+  'rupee', 'rural', 'rusty',
   'sadly', 'safer', 'saint', 'salad', 'sally', 'salon',
   'salsa', 'salty', 'salve', 'salvo', 'sandy', 'saner',
   'sappy', 'sassy', 'satin', 'satyr', 'sauce', 'saucy',
@@ -398,9 +342,7 @@
   'serum', 'serve', 'setup', 'seven', 'sever', 'sewer',
   'shack', 'shade', 'shady', 'shaft', 'shake', 'shaky',
   'shale', 'shall', 'shalt', 'shame', 'shank', 'shape',
-  'shard'
-]
-[
+  'shard',
   'share', 'shark', 'sharp', 'shave', 'shawl', 'shear',
   'sheen', 'sheep', 'sheer', 'sheet', 'sheik', 'shelf',
   'shell', 'shied', 'shift', 'shine', 'shiny', 'shire',
@@ -413,9 +355,7 @@
   'skiff', 'skill', 'skimp', 'skirt', 'skulk', 'skull',
   'skunk', 'slack', 'slain', 'slang', 'slant', 'slash',
   'slate', 'sleek', 'sleep', 'sleet', 'slept', 'slice',
-  'slick', 'slide', 'slime', 'slimy', 'sling', 'slink'
-]
-[
+  'slick', 'slide', 'slime', 'slimy', 'sling', 'slink',
   'sloop', 'slope', 'slosh', 'sloth', 'slump', 'slung',
   'slunk', 'slurp', 'slush', 'slyly', 'smack', 'small',
   'smart', 'smash', 'smear', 'smell', 'smelt', 'smile',
@@ -428,9 +368,7 @@
   'sound', 'south', 'sower', 'space', 'spade', 'spank',
   'spare', 'spark', 'spasm', 'spawn', 'speak', 'spear',
   'speck', 'speed', 'spell', 'spelt', 'spend', 'spent',
-  'sperm', 'spice', 'spicy', 'spied', 'spiel', 'spike'
-]
-[
+  'sperm', 'spice', 'spicy', 'spied', 'spiel', 'spike',
   'spiky', 'spill', 'spilt', 'spine', 'spiny', 'spire',
   'spite', 'splat', 'split', 'spoil', 'spoke', 'spoof',
   'spook', 'spool', 'spoon', 'spore', 'sport', 'spout',
@@ -444,9 +382,7 @@
   'sting', 'stink', 'stint', 'stock', 'stoic', 'stoke',
   'stole', 'stomp', 'stone', 'stony', 'stood', 'stool',
   'stoop', 'store', 'stork', 'storm', 'story', 'stout',
-  'stove', 'strap', 'straw'
-]
-[
+  'stove', 'strap', 'straw',
   'stray', 'strip', 'strut', 'stuck', 'study',
   'stuff', 'stump', 'stung', 'stunk', 'stunt',
   'style', 'suave', 'sugar', 'suing', 'suite',
@@ -456,9 +392,7 @@
   'sweat', 'sweep', 'sweet', 'swell', 'swept',
   'swift', 'swill', 'swine', 'swing', 'swirl',
   'swish', 'swoon', 'swoop', 'sword', 'swore',
-  'sworn', 'swung', 'synod', 'syrup'
-]
-[
+  'sworn', 'swung', 'synod', 'syrup',
   'tabby', 'table', 'taboo', 'tacit', 'tacky', 'taffy',
   'taint', 'taken', 'taker', 'tally', 'talon', 'tamer',
   'tango', 'tangy', 'taper', 'tapir', 'tardy', 'tarot',
@@ -473,9 +407,7 @@
   'tight', 'tilde', 'timer', 'timid', 'tipsy', 'titan',
   'tithe', 'title', 'toast', 'today', 'toddy', 'token',
   'tonal', 'tonga', 'tonic', 'tooth', 'topaz', 'topic',
-  'torch', 'torso', 'torus', 'total', 'totem'
-]
-[
+  'torch', 'torso', 'torus', 'total', 'totem',
   'touch', 'tough', 'towel', 'tower', 'toxic',
   'toxin', 'trace', 'track', 'tract', 'trade',
   'trail', 'train', 'trait', 'tramp', 'trash',
@@ -487,9 +419,7 @@
   'truth', 'tryst', 'tubal', 'tuber', 'tulip',
   'tulle', 'tumor', 'tunic', 'turbo', 'tutor',
   'twang', 'tweak', 'tweed', 'tweet', 'twice',
-  'twine', 'twirl', 'twist', 'twixt', 'tying'
-]
-[
+  'twine', 'twirl', 'twist', 'twixt', 'tying',
   'udder', 'ulcer', 'ultra', 'umbra',
   'uncle', 'uncut', 'under', 'undid',
   'undue', 'unfed', 'unfit', 'unify',
@@ -498,9 +428,7 @@
   'unwed', 'unzip', 'upper', 'upset',
   'urban', 'urine', 'usage', 'usher',
   'using', 'usual', 'usurp', 'utile',
-  'utter'
-]
-[
+  'utter',
   'vague', 'valet', 'valid', 'valor',
   'value', 'valve', 'vapid', 'vapor',
   'vault', 'vaunt', 'vegan', 'venom',
@@ -511,9 +439,7 @@
   'visor', 'vista', 'vital', 'vivid',
   'vixen', 'vocal', 'vodka', 'vogue',
   'voice', 'voila', 'vomit', 'voter',
-  'vouch', 'vowel', 'vying'
-]
-[
+  'vouch', 'vowel', 'vying',
   'wacky', 'wafer', 'wager', 'wagon', 'waist', 'waive',
   'waltz', 'warty', 'waste', 'watch', 'water', 'waver',
   'waxen', 'weary', 'weave', 'wedge', 'weedy', 'weigh',
@@ -527,12 +453,12 @@
   'woozy', 'wordy', 'world', 'worry', 'worse', 'worst',
   'worth', 'would', 'wound', 'woven', 'wrack', 'wrath',
   'wreak', 'wreck', 'wrest', 'wring', 'wrist', 'write',
-  'wrong', 'wrote', 'wrung', 'wryly'
-]
-[
+  'wrong', 'wrote', 'wrung', 'wryly',
   'yacht', 'yearn',
   'yeast', 'yield',
   'young', 'youth',
   'zebra', 'zesty',
   'zonal'
 ]
+
+export default words

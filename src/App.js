@@ -3,6 +3,7 @@ import './App.css'
 import Logo from './lexBrickLogo.png'
 import EmptyGrid from './components/emptyGrid';
 import { KeyboardTop, KeyboardMiddle, KeyboardBottom } from './components/keyboard';
+import words from './wordlists/allowedWords'
 
 function App() {
 
@@ -26,7 +27,7 @@ function App() {
     console.log(guessCounter)
     console.log(guesses)
     let newGuess = guess.toUpperCase()
-    if(guess.length === 5 && /^[A-Z]+$/.test(newGuess)) {
+    if(guess.length === 5 && /^[A-Z]+$/.test(newGuess) && words.includes(guess.toLowerCase())) {
       if(guessCounter < 1) {
         setFirstGuess(newGuess)
         setGuesses([...guesses, newGuess])
