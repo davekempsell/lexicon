@@ -75,7 +75,10 @@ body {
   gap: 1px;
 }
 
+.typed-input {
+  margin: 20px;
+}
+
 .footer {
-  text-align: right;
-  gap: 2px;
+  text-align: center;
 }

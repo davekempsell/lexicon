@@ -4,19 +4,12 @@ import Logo from './lexBrickLogo.png'
 import EmptyGrid from './components/emptyGrid';
 import { KeyboardTop, KeyboardMiddle, KeyboardBottom } from './components/keyboard';
 import words from './wordlists/allowedWords'
+import GuessGrid from './components/guessGrid';
 
 function App() {
-
-  const [guessCounter, setGuessCounter] = useState(0)
   const [guess, setGuess] = useState("")
   const [guesses, setGuesses]  = useState([])
-
-  const [firstGuess, setFirstGuess] = useState("")
-  const [secondGuess, setSecondGuess] = useState("")
-  const [thirdGuess, setThirdGuess] = useState("")
-  const [fourthGuess, setFourthGuess] = useState("")
-  const [fifthGuess, setFifthGuess] = useState("")
-  const [sixthGuess, setSixthGuess] = useState("")
+  const [emptyGrids, setEmptyGrids] = useState([1,2,3,4,5,6])
 
   const onChangeGuess = g => {
     const latestGuess = g.target.value;
@@ -24,37 +17,18 @@ function App() {
   }
 
   const submitGuess = () => {
-    console.log(guessCounter)
-    console.log(guesses)
     let newGuess = guess.toUpperCase()
-    if(guess.length === 5 && /^[A-Z]+$/.test(newGuess) && words.includes(guess.toLowerCase())) {
-      if(guessCounter < 1) {
-        setFirstGuess(newGuess)
+    if(
+        guess.length === 5
+        && /^[A-Z]+$/.test(newGuess)
+        && words.includes(guess.toLowerCase())
+        && !guesses.includes(newGuess)
+      ) {
         setGuesses([...guesses, newGuess])
-        setGuessCounter(guessCounter + 1);
-      } else if(guessCounter === 1 && !guesses.includes(newGuess)) {
-        setSecondGuess(newGuess)
-        setGuesses([...guesses, newGuess])
-        setGuessCounter(guessCounter + 1);
-      } else if(guessCounter === 2 && !guesses.includes(newGuess)) {
-        setThirdGuess(newGuess)
-        setGuesses([...guesses, newGuess])
-        setGuessCounter(guessCounter + 1);
-      } else if(guessCounter === 3 && !guesses.includes(newGuess)) {
-        setFourthGuess(newGuess)
-        setGuesses([...guesses, newGuess])
-        setGuessCounter(guessCounter + 1);
-      } else if(guessCounter === 4 && !guesses.includes(newGuess)) {
-        setFifthGuess(newGuess)
-        setGuesses([...guesses, newGuess])
-        setGuessCounter(guessCounter + 1);
-      } else if(guessCounter === 5 && !guesses.includes(newGuess)) {
-        setSixthGuess(newGuess)
-        setGuesses([...guesses, newGuess])
-        setGuessCounter(guessCounter + 1);
+        setEmptyGrids(emptyGrids.slice(0,-1))
+        setGuess("")
       }
     }
-  }
 
   return (
     <div id="game">
@@ -62,18 +36,18 @@ function App() {
         <img src={Logo} className="logo" alt="logo"/>
         <h1>LEXICON</h1>
       </div>
-      {EmptyGrid(1, firstGuess)}
-      {EmptyGrid(2, secondGuess)}
-      {EmptyGrid(3, thirdGuess)}
-      {EmptyGrid(4, fourthGuess)}
-      {EmptyGrid(5, fifthGuess)}
-      {EmptyGrid(6, sixthGuess)}
+        {guesses.map((guess, index) => {
+        return GuessGrid(index, guess)
+        })}
+        {emptyGrids.map(n => {
+          return EmptyGrid(n)
+        })}
       <div className="keyboard-container">
         {KeyboardTop()}
         {KeyboardMiddle()}
         {KeyboardBottom()}
       </div>
-      <div>
+      <div className='typed-input'>
         <input
           type="text"
           maxLength={5}
@@ -89,7 +63,7 @@ function App() {
         </button>
       </div>
       <div className="footer">
-        <p>Built by Dave Kempsell 2022</p>
+        Built by Dave Kempsell 2022
       </div>
     </div>
   );
