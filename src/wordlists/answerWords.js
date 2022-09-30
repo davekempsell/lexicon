@@ -331,7 +331,7 @@ const answerWords = [
   'rupee', 'rural', 'rusty',
   'sadly', 'safer', 'saint', 'salad', 'sally', 'salon',
   'salsa', 'salty', 'salve', 'salvo', 'sandy', 'saner',
-  'sappy', 'sassy', 'satin', 'satyr', 'sauce', 'saucy',
+  'sappy', 'sassy', 'satin', 'sauce', 'saucy',
   'sauna', 'saute', 'savor', 'savoy', 'savvy', 'scald',
   'scale', 'scalp', 'scaly', 'scamp', 'scant', 'scare',
   'scarf', 'scary', 'scene', 'scent', 'scion', 'scoff',
