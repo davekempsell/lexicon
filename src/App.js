@@ -3,9 +3,10 @@ import './App.css'
 import Logo from './lexBrickLogo.png'
 import EmptyGrid from './components/emptyGrid';
 import { KeyboardTop, KeyboardMiddle, KeyboardBottom } from './components/keyboard';
-import words from './wordlists/allowedWords'
 import gridDisplay from './components/guessGrid'
 import TargetWord from "./wordlists/targetWord"
+import answerWords from './wordlists/targetWords'
+import allowedWords from './wordlists/allowedWords';
 
 function App() {
   const [guess, setGuess] = useState("")
@@ -27,11 +28,11 @@ function App() {
   const submitGuess = () => {
     let newGuess = guess.toUpperCase()
     if(
-        winState == false
+        winState === false
         && guesses.length < 6
         && guess.length === 5
         && /^[A-Z]+$/.test(newGuess)
-        && words.includes(guess.toLowerCase())
+        && (allowedWords.includes(guess.toLowerCase()) )
         && !guesses.includes(newGuess)
       ) {
         setGuesses([...guesses, newGuess])

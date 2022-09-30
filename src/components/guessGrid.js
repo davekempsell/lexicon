@@ -4,16 +4,15 @@ import TargetWord from "../wordlists/targetWord"
 function gridDisplay(line, guess) {
 
   let guessArray = guess.split("")
-  const targetArray = TargetWord.split("")
 
   return (
     <div key={`guessGrid-${line}`} className="grid">
       {guessArray.map((letter, index) => {
-        if(!targetArray.includes(letter)) {
+        if(!TargetWord.includes(letter)) {
           return (
             <div className="box-wrong" key={`guess-${index}`}>{letter}</div>
           )
-        } else if(letter === targetArray[index]) {
+        } else if(letter === TargetWord[index]) {
           return (
             <div className="box-right" key={`guess-${index}`}>{letter}</div>
           )
