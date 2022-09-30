@@ -4,7 +4,7 @@ import Logo from './lexBrickLogo.png'
 import EmptyGrid from './components/emptyGrid';
 import { KeyboardTop, KeyboardMiddle, KeyboardBottom } from './components/keyboard';
 import words from './wordlists/allowedWords'
-import GuessGrid from './components/guessGrid';
+import gridDisplay from './components/guessGrid'
 
 function App() {
   const [guess, setGuess] = useState("")
@@ -27,6 +27,7 @@ function App() {
         setGuesses([...guesses, newGuess])
         setEmptyGrids(emptyGrids.slice(0,-1))
         setGuess("")
+        console.log("allowed")
       }
     }
 
@@ -37,7 +38,7 @@ function App() {
         <h1>LEXICON</h1>
       </div>
         {guesses.map((guess, index) => {
-        return GuessGrid(index, guess)
+        return gridDisplay(index, guess)
         })}
         {emptyGrids.map(n => {
           return EmptyGrid(n)

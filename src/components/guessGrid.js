@@ -1,16 +1,30 @@
-function GuessGrid(line, guess) {
+import React from 'react'
+import TargetWord from "../wordlists/targetWord"
+
+function gridDisplay(line, guess) {
 
   let guessArray = guess.split("")
+  const targetArray = TargetWord.split("")
 
   return (
     <div key={`guessGrid-${line}`} className="grid">
-      <div className="box">{guessArray[0]}</div>
-      <div className="box">{guessArray[1]}</div>
-      <div className="box">{guessArray[2]}</div>
-      <div className="box">{guessArray[3]}</div>
-      <div className="box">{guessArray[4]}</div>
+      {guessArray.map((letter, index) => {
+        if(!targetArray.includes(letter)) {
+          return (
+            <div className="box-wrong" key={`guess-${index}`}>{letter}</div>
+          )
+        } else if(letter === targetArray[index]) {
+          return (
+            <div className="box-right" key={`guess-${index}`}>{letter}</div>
+          )
+        } else {
+          return (
+            <div className="box-close" key={`guess-${index}`}>{letter}</div>
+          )
+        }
+      })}
     </div>
   )
 } 
 
-export default GuessGrid
+export default gridDisplay

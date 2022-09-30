@@ -37,16 +37,55 @@ body {
   margin: 2px;
 }
 
-.box {
+.box-empty {
   width: 60px;
   height: 60px;
   border: 2px solid;
   border-color: rgb(164, 164, 164);
-  color: black;
   display: grid;
   place-items: center;
   font-size: 2.4rem;
   text-transform: uppercase;
+  color: black
+}
+
+.box-wrong {
+  width: 60px;
+  height: 60px;
+  border: 2px solid;
+  border-color: rgb(164, 164, 164);
+  display: grid;
+  place-items: center;
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  background-color: var(--wrong);
+  color: white;
+}
+
+.box-close {
+  width: 60px;
+  height: 60px;
+  border: 2px solid;
+  border-color: rgb(164, 164, 164);
+  display: grid;
+  place-items: center;
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  background-color: var(--close);
+  color: white;
+}
+
+.box-right {
+  width: 60px;
+  height: 60px;
+  border: 2px solid;
+  border-color: rgb(164, 164, 164);
+  display: grid;
+  place-items: center;
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  background-color: var(--right);
+  color: white;
 }
 
 .keyboard-container {
