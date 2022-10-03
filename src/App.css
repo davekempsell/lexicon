@@ -7,7 +7,7 @@ body {
 :root {
   --wrong: #3a3a3c;
   --close: #b59f3b;
-  --right: #538d4e;
+  --correct: #538d4e;
 }
 
 #game {
@@ -49,6 +49,21 @@ body {
   color: black
 }
 
+@keyframes wrongBox {
+  from {background-color: white;}
+  to {background-color: var(--wrong);}
+}
+
+@keyframes closeBox {
+  from {background-color: white;}
+  to {background-color: var(--close);}
+}
+
+@keyframes correctBox {
+  from {background-color: white;}
+  to {background-color: var(--correct);}
+}
+
 .box-wrong {
   width: 50px;
   height: 50px;
@@ -60,6 +75,8 @@ body {
   text-transform: uppercase;
   background-color: var(--wrong);
   color: white;
+  animation-name: wrongBox;
+  animation-duration: 4s;
 }
 
 .box-close {
@@ -73,9 +90,11 @@ body {
   text-transform: uppercase;
   background-color: var(--close);
   color: white;
+  animation-name: closeBox;
+  animation-duration: 4s;
 }
 
-.box-right {
+.box-correct {
   width: 50px;
   height: 50px;
   border: 2px solid;
@@ -84,8 +103,10 @@ body {
   place-items: center;
   font-size: 2.4rem;
   text-transform: uppercase;
-  background-color: var(--right);
+  background-color: var(--correct);
   color: white;
+  animation-name: correctBox;
+  animation-duration: 4s;
 }
 
 .keyboard-container {

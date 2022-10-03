@@ -14,7 +14,7 @@ function GuessGrid(line, guess) {
           )
         } else if(letter === TargetWord[index]) {
           return (
-            <div className="box-right" key={`guess-${index}`}>{letter}</div>
+            <div className="box-correct" key={`guess-${index}`}>{letter}</div>
           )
         } else {
           return (
