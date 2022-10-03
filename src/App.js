@@ -106,6 +106,7 @@ function App() {
         <img src={Logo} className="logo" alt="logo"/>
         <h1>LEXICON</h1>
       </div>
+        <p>{TargetWord}</p>
         {guesses.map((guess, index) => {
         return GuessGrid(index, guess)
         })}
