@@ -153,6 +153,42 @@ body {
   font-weight: bold;
 }
 
+.key-wrong {
+  width: 40px;
+  height: 50px;
+  border-radius: 3px;
+  padding: 0px;
+  border-color: lightgray;
+  background-color: var(--wrong);
+  text-transform: uppercase;
+  color: white;
+  font-weight: bold;
+}
+
+.key-close {
+  width: 40px;
+  height: 50px;
+  border-radius: 3px;
+  padding: 0px;
+  border-color: lightgray;
+  background-color: var(--close);
+  text-transform: uppercase;
+  color: white;
+  font-weight: bold;
+}
+
+.key-correct {
+  width: 40px;
+  height: 50px;
+  border-radius: 3px;
+  padding: 0px;
+  border-color: lightgray;
+  background-color: var(--correct);
+  text-transform: uppercase;
+  color: white;
+  font-weight: bold;
+}
+
 .key-action {
   width: 60px;
   height: 50px;

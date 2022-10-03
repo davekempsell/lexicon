@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import './App.css'
 import Logo from './lexBrickLogo.png'
 import EmptyGrid from './components/emptyGrid';
-import { KeyboardTop, KeyboardMiddle, KeyboardBottom } from './components/keyboard';
 import GuessGrid from './components/guessGrid'
 import TargetWord from "./wordlists/targetWord"
 import allowedWords from './wordlists/allowedWords';
 import guessBoxes from './components/guessBoxes';
+import { createKeyboard } from './components/keyboard';
 
 function App() {
   const [guesses, setGuesses]  = useState([])
@@ -14,8 +14,9 @@ function App() {
   const [winState, setWinState] = useState(false)
 
   const [guessLetters, setGuessLetters] = useState([])
+  const [letterState, setLetterState] = useState({})
 
-  const checkWin = (lastGuess) => {
+  const checkWin = lastGuess => {
     if(lastGuess === TargetWord) {
       setWinState(true)
     }
@@ -32,7 +33,7 @@ function App() {
     setGuessLetters(guessLetters.slice(0,-1))
   }
 
-  const keyboardSubmit = () => {
+  async function keyboardSubmit() {
     if(guessLetters.length === 5) {
       const guessWord = guessLetters.join("")
       if(
@@ -46,8 +47,29 @@ function App() {
           setEmptyGrids(emptyGrids.slice(0,-1))
           checkWin(guessWord)
           setGuessLetters([])
+          await updateLetters(guesses)
         }
     }
+  }
+
+  const updateLetters = (array) => {
+    let letters = {}
+    array.forEach(guess => {
+      guess.split("").forEach((letter, index) => {
+        if(letter === TargetWord[index]) {
+          letters[letter] = 'correct'
+        } else if(TargetWord.includes(letter)) {
+          if(!letters[letter]) {
+            letters[letter] = 'close'
+          }
+        } else {
+          letters[letter] = 'wrong'
+        }
+      })
+    })
+    setLetterState((letterState) => {
+      return letters
+    })
   }
 
   return (
@@ -64,11 +86,7 @@ function App() {
         {emptyGrids.map(n => {
           return EmptyGrid(n, guessLetters)
         })}
-      <div className="keyboard-container">
-        {KeyboardTop(onKeyPress)}
-        {KeyboardMiddle(onKeyPress)}
-        {KeyboardBottom(onKeyPress, deleteLetter, keyboardSubmit)}
-      </div>
+      {createKeyboard(onKeyPress, deleteLetter, keyboardSubmit, letterState)}
     </div>
   );
 }
