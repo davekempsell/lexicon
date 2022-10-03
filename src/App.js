@@ -15,6 +15,12 @@ function App() {
 
   const [guessLetters, setGuessLetters] = useState([])
 
+  const checkWin = (lastGuess) => {
+    if(lastGuess === TargetWord) {
+      setWinState(true)
+    }
+  }
+
   const onKeyPress = key => {
     if(guessLetters.length < 5) {
     const newGuessLetter = key.target.value
@@ -44,12 +50,6 @@ function App() {
     }
   }
 
-  const checkWin = (lastGuess) => {
-    if(lastGuess === TargetWord) {
-      setWinState(true)
-    }
-  }
-
   return (
     <div id="game">
       <div className="title">
@@ -68,9 +68,6 @@ function App() {
         {KeyboardTop(onKeyPress)}
         {KeyboardMiddle(onKeyPress)}
         {KeyboardBottom(onKeyPress, deleteLetter, keyboardSubmit)}
-      </div>
-      <div className="footer">
-        Built by Dave Kempsell 2022
       </div>
     </div>
   );
