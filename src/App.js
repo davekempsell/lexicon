@@ -6,6 +6,7 @@ import { KeyboardTop, KeyboardMiddle, KeyboardBottom } from './components/keyboa
 import GuessGrid from './components/guessGrid'
 import TargetWord from "./wordlists/targetWord"
 import allowedWords from './wordlists/allowedWords';
+import guessBoxes from './components/guessBoxes';
 
 function App() {
   const [guesses, setGuesses]  = useState([])
@@ -49,30 +50,6 @@ function App() {
     }
   }
 
-  const guessBoxes = (array) => {
-    if(winState) {
-      return (
-        <div key={`emptyGrid-guess`} className="grid">
-          <div className="box-empty" key={`emptyBox-1`}></div>
-          <div className="box-empty" key={`emptyBox-2`}></div>
-          <div className="box-empty" key={`emptyBox-3`}></div>
-          <div className="box-empty" key={`emptyBox-4`}></div>
-          <div className="box-empty" key={`emptyBox-5`}></div>
-        </div>
-      )
-    } else if(guesses.length < 6) {
-      return (
-        <div key={`emptyGrid-guess`} className="grid">
-          <div className="box-empty" key={`emptyBox-1`}>{array[0]}</div>
-          <div className="box-empty" key={`emptyBox-2`}>{array[1]}</div>
-          <div className="box-empty" key={`emptyBox-3`}>{array[2]}</div>
-          <div className="box-empty" key={`emptyBox-4`}>{array[3]}</div>
-          <div className="box-empty" key={`emptyBox-5`}>{array[4]}</div>
-        </div>
-      )
-    }
-  }
-
   return (
     <div id="game">
       <div className="title">
@@ -83,7 +60,7 @@ function App() {
         {guesses.map((guess, index) => {
         return GuessGrid(index, guess)
         })}
-        {guessBoxes(guessLetters)}
+        {guessBoxes(guessLetters, winState, guesses)}
         {emptyGrids.map(n => {
           return EmptyGrid(n, guessLetters)
         })}
