@@ -8,7 +8,6 @@ import TargetWord from "./wordlists/targetWord"
 import allowedWords from './wordlists/allowedWords';
 
 function App() {
-  const [guess, setGuess] = useState("")
   const [guesses, setGuesses]  = useState([])
   const [emptyGrids, setEmptyGrids] = useState([2,3,4,5,6])
   const [winState, setWinState] = useState(false)
@@ -42,13 +41,7 @@ function App() {
         setEmptyGrids(emptyGrids.slice(0,-1))
         checkWin(newGuess)
         setKeyboardGuesses([])
-        setGuess("")
       }
-  }
-
-  const onChangeGuess = g => {
-    const latestGuess = g.target.value;
-    setGuess(latestGuess)
   }
 
   const checkWin = (lastGuess) => {
@@ -56,25 +49,6 @@ function App() {
       setWinState(true)
     }
   }
-
-  const submitGuess = () => {
-    console.log(TargetWord)
-    let newGuess = guess.toUpperCase()
-    if(
-        winState === false
-        && guesses.length < 6
-        && guess.length === 5
-        && /^[A-Z]+$/.test(newGuess)
-        && (allowedWords.includes(guess.toLowerCase()))
-        && !guesses.includes(newGuess)
-      ) {
-        setGuesses([...guesses, newGuess])
-        setEmptyGrids(emptyGrids.slice(0,-1))
-        checkWin(newGuess)
-        setKeyboardGuesses([])
-        setGuess("")
-      }
-    }
 
   const guessBoxes = (array) => {
     if(winState) {
@@ -118,21 +92,6 @@ function App() {
         {KeyboardTop(onKeyPress)}
         {KeyboardMiddle(onKeyPress)}
         {KeyboardBottom(onKeyPress, deleteLetter, keyboardSubmit)}
-      </div>
-      <div className='typed-input'>
-        <input
-          type="text"
-          maxLength={5}
-          placeholder='Type guess here'
-          value={guess}
-          onChange={onChangeGuess}
-        />
-        <button
-          type="button"
-          onClick={submitGuess}
-        >
-          Guess
-        </button>
       </div>
       <div className="footer">
         Built by Dave Kempsell 2022
