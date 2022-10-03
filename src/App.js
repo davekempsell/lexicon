@@ -12,36 +12,35 @@ function App() {
   const [emptyGrids, setEmptyGrids] = useState([2,3,4,5,6])
   const [winState, setWinState] = useState(false)
 
-  const [keyboardGuesses, setKeyboardGuesses] = useState([])
+  const [guessLetters, setGuessLetters] = useState([])
 
   const onKeyPress = key => {
-    if(keyboardGuesses.length < 5) {
-    const newKeyboardGuess = key.target.value
-    setKeyboardGuesses([...keyboardGuesses, newKeyboardGuess])
+    if(guessLetters.length < 5) {
+    const newGuessLetter = key.target.value
+    setGuessLetters([...guessLetters, newGuessLetter])
     }
   }
 
   const deleteLetter = () => {
-    setKeyboardGuesses(keyboardGuesses.slice(0,-1))
+    setGuessLetters(guessLetters.slice(0,-1))
   }
 
   const keyboardSubmit = () => {
-    console.log(TargetWord)
-    const kbGuess = keyboardGuesses.join("")
-    let newGuess = kbGuess.toUpperCase()
-    if(
-        winState === false
-        && guesses.length < 6
-        && kbGuess.length === 5
-        && /^[A-Z]+$/.test(newGuess)
-        && (allowedWords.includes(kbGuess.toLowerCase()))
-        && !guesses.includes(newGuess)
-      ) {
-        setGuesses([...guesses, newGuess])
-        setEmptyGrids(emptyGrids.slice(0,-1))
-        checkWin(newGuess)
-        setKeyboardGuesses([])
-      }
+    if(guessLetters.length === 5) {
+      const guessWord = guessLetters.join("")
+      if(
+          winState === false
+          && guesses.length < 6
+          && /^[A-Z]+$/.test(guessWord)
+          && (allowedWords.includes(guessWord.toLowerCase()))
+          && !guesses.includes(guessWord)
+        ) {
+          setGuesses([...guesses, guessWord])
+          setEmptyGrids(emptyGrids.slice(0,-1))
+          checkWin(guessWord)
+          setGuessLetters([])
+        }
+    }
   }
 
   const checkWin = (lastGuess) => {
@@ -84,9 +83,9 @@ function App() {
         {guesses.map((guess, index) => {
         return GuessGrid(index, guess)
         })}
-        {guessBoxes(keyboardGuesses)}
+        {guessBoxes(guessLetters)}
         {emptyGrids.map(n => {
-          return EmptyGrid(n, keyboardGuesses)
+          return EmptyGrid(n, guessLetters)
         })}
       <div className="keyboard-container">
         {KeyboardTop(onKeyPress)}

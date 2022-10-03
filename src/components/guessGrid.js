@@ -6,12 +6,9 @@ function GuessGrid(line, guess) {
   const guessArray = guess.split("")
   const targetArray = TargetWord.split("")
   const count = {}
+
   for (const element of targetArray) {
-    if(count[element]) {
-      count[element] += 1;
-    } else {
-      count[element] = 1;
-    }
+    count[element] ? count[element] += 1 : count[element] = 1;
   }
 
   return (
@@ -22,11 +19,26 @@ function GuessGrid(line, guess) {
           return (
             <div className="box-correct" key={`guess-${index}`}>{letter}</div>
           )
-        } else if(TargetWord.includes(letter) && count[letter] > 0) {
-          count[letter] -= 1;
-          return (
-            <div className="box-close" key={`guess-${index}`}>{letter}</div>
-          )
+        } else if( count[letter] > 0) {
+          // cG shortcut for correctGuesses
+          let cG = {}
+          guessArray.forEach((letter, index) => {
+            if (letter === targetArray[index]) {
+              cG[letter] ? cG[letter] += 1 : cG[letter] = 1;
+            } else {
+              cG[letter] = 0;
+            }
+          })
+          if(count[letter] > cG[letter]) {
+            count[letter] -= 1;
+            return (
+              <div className="box-close" key={`guess-${index}`}>{letter}</div>
+            )
+          } else {
+            return (
+              <div className="box-wrong" key={`guess-${index}`}>{letter}</div>
+            )
+          }
         } else {
           return (
             <div className="box-wrong" key={`guess-${index}`}>{letter}</div>
