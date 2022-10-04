@@ -7,11 +7,13 @@ import TargetWord from "./wordlists/targetWord"
 import allowedWords from './wordlists/allowedWords';
 import guessBoxes from './components/guessBoxes';
 import { createKeyboard } from './components/keyboard';
+import { PopUp } from './components/winPopUp';
 
 function App() {
   const [guesses, setGuesses]  = useState([])
   const [emptyGrids, setEmptyGrids] = useState([2,3,4,5,6])
   const [winState, setWinState] = useState(false)
+  const [popUpState, setPopUpState] = useState(false)
 
   const [guessLetters, setGuessLetters] = useState([])
   const [letterState, setLetterState] = useState({})
@@ -19,6 +21,13 @@ function App() {
   const checkWin = lastGuess => {
     if(lastGuess === TargetWord) {
       setWinState(true)
+      setPopUpState(true)
+    }
+  }
+
+  const checkEnd = (array) => {
+    if(array.length === 6) {
+      setPopUpState(true)
     }
   }
 
@@ -49,6 +58,7 @@ function App() {
           setGuessLetters([])
           tempGuesses.push(guessWord)
           updateLetters(tempGuesses)
+          checkEnd(tempGuesses)
         }
     }
   }
@@ -71,20 +81,33 @@ function App() {
     setLetterState(letters)
   }
 
+  function closePopUp() {
+    setPopUpState(false)
+  }
+
+  const displayPopUp = () => {
+    if(popUpState) {
+      return PopUp(closePopUp, winState, TargetWord)
+    }
+  }
+
   return (
     <div id="game">
+      {displayPopUp()}
       <div className="title">
         <img src={Logo} className="logo" alt="logo"/>
         <h1>LEXICON</h1>
       </div>
-        {guesses.map((guess, index) => {
-          return GuessGrid(index, guess)
-        })}
-        {guessBoxes(guessLetters, winState, guesses)}
-        {emptyGrids.map(n => {
-          return EmptyGrid(n, guessLetters)
-        })}
+      {guesses.map((guess, index) => {
+        return GuessGrid(index, guess)
+      })}
+      {guessBoxes(guessLetters, winState, guesses)}
+      {emptyGrids.map(n => {
+        return EmptyGrid(n, guessLetters)
+      })}
       {createKeyboard(onKeyPress, deleteLetter, keyboardSubmit, letterState)}
+      <p>{TargetWord}</p>
+      <p>{winState}</p>
     </div>
   );
 }

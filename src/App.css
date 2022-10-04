@@ -227,3 +227,55 @@ body {
 .footer {
   text-align: center;
 }
+
+@keyframes fade-in {
+  0%{opacity: 0}
+  100%{opacity: 1}
+}
+
+.popup {
+  position: absolute;
+  margin-top: 80px;
+  z-index: 1;
+  border-color: black;
+  border-radius: 20px;
+  background-color: white;
+  border-color: black;
+  border-style: solid;
+  width: 350px;
+  height: 500px;
+  animation-name: fade-in;
+  animation-duration: 3s;
+}
+
+.popup-content {
+  position: relative;
+  text-align: center;
+  padding: 10px;
+}
+
+.popup-close {
+  position: absolute;
+  z-index: 1;
+  margin: 10px;
+  top: 0;
+  right: 0;
+  font-weight: bold;
+  background-color: #ededed;
+  border-radius: 5px; 
+}
+
+.popup-winner {
+  font-size: large;
+}
+
+.popup-loser {
+  font-size: large;
+}
+
+.popup-jobstuff {
+  position: relative;
+  margin-top: 70px;
+  font-style: italic;
+  font-size: medium;
+}
