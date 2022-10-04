@@ -107,7 +107,6 @@ function App() {
         return EmptyGrid(n, guessLetters)
       })}
       {createKeyboard(onKeyPress, deleteLetter, keyboardSubmit, letterState)}
-      <p>{TargetWord}</p>
     </div>
   );
 }
