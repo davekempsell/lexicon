@@ -33,13 +33,13 @@ function App() {
     setGuessLetters(guessLetters.slice(0,-1))
   }
 
-  async function keyboardSubmit() {
+  function keyboardSubmit() {
+    let tempGuesses = guesses
     if(guessLetters.length === 5) {
       const guessWord = guessLetters.join("")
       if(
           winState === false
           && guesses.length < 6
-          && /^[A-Z]+$/.test(guessWord)
           && (allowedWords.includes(guessWord.toLowerCase()))
           && !guesses.includes(guessWord)
         ) {
@@ -47,7 +47,8 @@ function App() {
           setEmptyGrids(emptyGrids.slice(0,-1))
           checkWin(guessWord)
           setGuessLetters([])
-          await updateLetters(guesses)
+          tempGuesses.push(guessWord)
+          updateLetters(tempGuesses)
         }
     }
   }
@@ -67,9 +68,7 @@ function App() {
         }
       })
     })
-    setLetterState((letterState) => {
-      return letters
-    })
+    setLetterState(letters)
   }
 
   return (
@@ -80,7 +79,7 @@ function App() {
       </div>
         <p>{TargetWord}</p>
         {guesses.map((guess, index) => {
-        return GuessGrid(index, guess)
+          return GuessGrid(index, guess)
         })}
         {guessBoxes(guessLetters, winState, guesses)}
         {emptyGrids.map(n => {

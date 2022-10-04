@@ -1,5 +1,6 @@
 const guessBoxes = (array, winState, guesses) => {
   if(winState) {
+    if(guesses.length < 6) {
     return (
       <div key={`emptyGrid-guess`} className="grid">
         <div className="box-empty" key={`emptyBox-1`}></div>
@@ -9,6 +10,7 @@ const guessBoxes = (array, winState, guesses) => {
         <div className="box-empty" key={`emptyBox-5`}></div>
       </div>
     )
+    }
   } else if(guesses.length < 6) {
     return (
       <div key={`emptyGrid-guess`} className="grid">
