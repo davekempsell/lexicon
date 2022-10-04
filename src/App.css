@@ -153,6 +153,26 @@ body {
   font-weight: bold;
 }
 
+@keyframes wrongLetter {
+  from {background-color: lightgray;}
+  to {background-color: var(--wrong);}
+}
+
+@keyframes closeLetter {
+  from {background-color: lightgray;}
+  to {background-color: var(--close);}
+}
+
+@keyframes correctLetter {
+  from {background-color: lightgray;}
+  to {background-color: var(--correct);}
+}
+
+@keyframes textChange {
+  from {color: black;}
+  to {color: white}
+}
+
 .key-wrong {
   width: 40px;
   height: 50px;
@@ -163,6 +183,7 @@ body {
   text-transform: uppercase;
   color: white;
   font-weight: bold;
+  animation: wrongLetter 2s, textChange 2s;
 }
 
 .key-close {
@@ -175,6 +196,7 @@ body {
   text-transform: uppercase;
   color: white;
   font-weight: bold;
+  animation: closeLetter 2s, textChange 2s;
 }
 
 .key-correct {
@@ -187,6 +209,7 @@ body {
   text-transform: uppercase;
   color: white;
   font-weight: bold;
+  animation: correctLetter 2s, textChange 2s;
 }
 
 .key-action {
