@@ -3,13 +3,14 @@ import './App.css'
 import Logo from './lexBrickLogo.png'
 import EmptyGrid from './components/emptyGrid';
 import GuessGrid from './components/guessGrid'
-import TargetWord from "./wordlists/targetWord"
+import targetWord from "./wordlists/targetWord"
 import allowedWords from './wordlists/allowedWords';
 import guessBoxes from './components/guessBoxes';
 import { createKeyboard } from './components/keyboard';
 import { PopUp } from './components/winPopUp';
 
 function App() {
+  const TargetWord = targetWord
   const [guesses, setGuesses]  = useState([])
   const [emptyGrids, setEmptyGrids] = useState([2,3,4,5,6])
   const [winState, setWinState] = useState(false)
@@ -99,7 +100,7 @@ function App() {
         <h1>LEXICON</h1>
       </div>
       {guesses.map((guess, index) => {
-        return GuessGrid(index, guess)
+        return GuessGrid(index, guess, TargetWord)
       })}
       {guessBoxes(guessLetters, winState, guesses)}
       {emptyGrids.map(n => {
@@ -107,7 +108,6 @@ function App() {
       })}
       {createKeyboard(onKeyPress, deleteLetter, keyboardSubmit, letterState)}
       <p>{TargetWord}</p>
-      <p>{winState}</p>
     </div>
   );
 }

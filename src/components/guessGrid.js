@@ -1,7 +1,4 @@
-import React from 'react'
-import TargetWord from "../wordlists/targetWord"
-
-function GuessGrid(line, guess) {
+function GuessGrid(line, guess, TargetWord) {
 
   const guessArray = guess.split("")
   const targetArray = TargetWord.split("")
