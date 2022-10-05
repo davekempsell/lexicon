@@ -22,6 +22,7 @@ function App() {
   const [guessLetters, setGuessLetters] = useState([])
   const [letterState, setLetterState] = useState({})
   const [rulesMessage, setRulesMessage] = useState('')
+  const [hardMode, setHardMode] = useState(false)
 
   // Function is run after each guess to check if the game has ended,
   // due to matching the target word, or running out of guesses.
@@ -119,6 +120,14 @@ function App() {
     }
   }
 
+  const hardmodetest = () => {
+    if(hardMode) {
+      return (
+        <p>HARDMODE ENGAGED</p>
+      )
+    }
+  }
+
   return (
     <div className='main-container'>
       {displayOutcomePopUp()}
@@ -137,6 +146,8 @@ function App() {
         })}
       </div>
       {createKeyboard(onKeyPress, deleteLetter, keyboardSubmit, letterState)}
+      {ToggleSwitch(setHardMode, hardMode)}
+      {hardmodetest()}
     </div>
   );
 }
