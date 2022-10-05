@@ -113,7 +113,6 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
-  
 }
 
 .keyboard-top {
@@ -141,18 +140,6 @@ body {
   margin: 20px;
 }
 
-.key-standard {
-  width: 36px;
-  height: 45px;
-  border-radius: 3px;
-  padding: 0px;
-  border-color: lightgray;
-  background-color: lightgray;
-  text-transform: uppercase;
-  color: black;
-  font-weight: bold;
-}
-
 @keyframes wrongLetter {
   from {background-color: lightgray;}
   to {background-color: var(--wrong);}
@@ -173,22 +160,37 @@ body {
   to {color: white}
 }
 
+.key-standard {
+  width: 30px;
+  height: 36px;
+  font-size:small;
+  border-radius: 3px;
+  padding: 0px;
+  border-color: lightgray;
+  background-color: lightgray;
+  text-transform: uppercase;
+  color: black;
+  font-weight:bold;
+}
+
 .key-wrong {
-  width: 36px;
-  height: 45px;
+  width: 30px;
+  height: 36px;
+  font-size:small;;
   border-radius: 3px;
   padding: 0px;
   border-color: lightgray;
   background-color: var(--wrong);
   text-transform: uppercase;
   color: white;
-  font-weight: bold;
+  font-weight:bold;
   animation: wrongLetter 2s, textChange 2s;
 }
 
 .key-close {
-  width: 36px;
-  height: 45px;
+  width: 30px;
+  height: 36px;
+  font-size:small;
   border-radius: 3px;
   padding: 0px;
   border-color: lightgray;
@@ -200,8 +202,9 @@ body {
 }
 
 .key-correct {
-  width: 36px;
-  height: 45px;
+  width: 30px;
+  height: 36px;
+  font-size:small;
   border-radius: 3px;
   padding: 0px;
   border-color: lightgray;
@@ -213,8 +216,9 @@ body {
 }
 
 .key-action {
-  width: 54px;
-  height: 45px;
+  width: 46px;
+  height: 36px;
+  font-size: small;
   border-radius: 3px;
   padding: 1px;
   border-color: lightgray;

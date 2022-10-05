@@ -43,6 +43,10 @@ function App() {
     setGuessLetters(guessLetters.slice(0,-1))
   }
 
+  const checkWordAllowed = () => {
+    
+  }
+
   function keyboardSubmit() {
     let tempGuesses = guesses
     if(guessLetters.length === 5) {
