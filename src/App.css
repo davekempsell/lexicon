@@ -10,24 +10,34 @@ body {
   --correct: #538d4e;
 }
 
-#game {
+.main-container {
   display: flex;
   flex: none;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: 600px;
+  height: 10%;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .title {
-  display: flex;
-  flex-direction: row;
+  align-self: center;
+  font-size: x-large;
+  font-weight: bold;
 }
 
 .logo {
   align-self: center;
-  height: 50px;
+  height: 80%;
+  
 }
 
 .grid {
@@ -113,6 +123,9 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 480px;
+  overflow:hidden;
 }
 
 .keyboard-top {
@@ -121,12 +134,15 @@ body {
   grid-template-columns: repeat(10, auto);
   gap: 4px;
   margin-bottom: 2px;
+  width: 90%;
+  
 }
 .keyboard-middle {
   margin: 2px;
   display: inline-grid;
   grid-template-columns: repeat(9, auto);
   gap: 4px;
+  width: 80%;
 }
 .keyboard-bottom {
   margin-bottom: 20px;
@@ -134,6 +150,7 @@ body {
   grid-template-columns: repeat(9, auto);
   gap: 4px;
   margin-top: 2px;
+  width: 90%;
 }
 
 .typed-input {
@@ -161,8 +178,8 @@ body {
 }
 
 .key-standard {
-  width: 30px;
-  height: 36px;
+  width: 100%;
+  height: 42px;
   font-size:small;
   border-radius: 3px;
   padding: 0px;
@@ -216,8 +233,8 @@ body {
 }
 
 .key-action {
-  width: 46px;
-  height: 36px;
+  width: 100%;
+  height: 42px;
   font-size: small;
   border-radius: 3px;
   padding: 1px;

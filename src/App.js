@@ -43,8 +43,12 @@ function App() {
     setGuessLetters(guessLetters.slice(0,-1))
   }
 
-  const checkWordAllowed = () => {
-    
+  const checkWordAllowed = (word) => {
+    if (allowedWords.includes(word.toLowerCase())) {
+      return true
+    } else {
+
+    }
   }
 
   function keyboardSubmit() {
@@ -97,12 +101,13 @@ function App() {
   }
 
   return (
-    <div id="game">
+    <div className='main-container'>
       {displayPopUp()}
-      <div className="title">
+      <div className="title-container">
         <img src={Logo} className="logo" alt="logo"/>
-        <h1>LEXICON</h1>
+        <div className='title'>LEXICON</div>
       </div>
+      <div>
       {guesses.map((guess, index) => {
         return GuessGrid(index, guess, TargetWord)
       })}
@@ -110,6 +115,7 @@ function App() {
       {emptyGrids.map(n => {
         return EmptyGrid(n, guessLetters)
       })}
+      </div>
       {createKeyboard(onKeyPress, deleteLetter, keyboardSubmit, letterState)}
     </div>
   );
