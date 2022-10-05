@@ -124,16 +124,16 @@ function App() {
       {displayRulesPopUp()}
       <div className="title-container">
         <img src={Logo} className="logo" alt="logo"/>
-        <div className='title'>LEXICON {TargetWord}</div>
+        <div className='title'>LEXICON</div>
       </div>
       <div>
-      {guesses.map((guess, index) => {
-        return GuessGrid(index, guess, TargetWord)
-      })}
-      {guessBoxes(guessLetters, winState, guesses)}
-      {emptyGrids.map(n => {
-        return EmptyGrid(n, guessLetters)
-      })}
+        {guesses.map((guess, index) => {
+          return GuessGrid(index, guess, TargetWord)
+        })}
+        {guessBoxes(guessLetters, winState, guesses)}
+        {emptyGrids.map(n => {
+          return EmptyGrid(n, guessLetters)
+        })}
       </div>
       {createKeyboard(onKeyPress, deleteLetter, keyboardSubmit, letterState)}
     </div>
