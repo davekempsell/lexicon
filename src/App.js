@@ -9,6 +9,7 @@ import guessBoxes from './components/guessBoxes';
 import { createKeyboard } from './components/keyboard';
 import { PopUp } from './components/outcomePopUp';
 import { rulesPopUp } from './components/rulesPopUp';
+import ToggleSwitch from './components/ToggleSwitch/toggleSwitch';
 
 function App() {
   const TargetWord = targetWord
@@ -22,7 +23,7 @@ function App() {
   const [letterState, setLetterState] = useState({})
   const [rulesMessage, setRulesMessage] = useState('')
 
-  // Function run after each guess to check if the game has ended,
+  // Function is run after each guess to check if the game has ended,
   // due to matching the target word, or running out of guesses.
   const checkOutcome = (lastGuess, array) => {
     if(lastGuess === TargetWord) {
