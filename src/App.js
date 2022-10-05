@@ -37,11 +37,20 @@ function App() {
     }
   }
 
-  // Inputting letters using the letter keys on the keyboard into the guessLetters array
+  // Checking the selected letter is available to use in a guess
   const onKeyPress = key => {
+    if(letterState[key.target.value] === 'wrong') {
+      notAllowed('Letter not in word')
+    } else {
+      inputLetter(key)
+    } 
+  }
+
+  // Inputting letters using the letter keys on the keyboard into the guessLetters array
+  const inputLetter = key => {
     if(guessLetters.length < 5) {
-    const newGuessLetter = key.target.value
-    setGuessLetters([...guessLetters, newGuessLetter])
+      const newGuessLetter = key.target.value
+      setGuessLetters([...guessLetters, newGuessLetter])
     }
   }
 
@@ -59,7 +68,7 @@ function App() {
         notAllowed('Not enough letters')
       } else if(!allowedWords.includes(guessWord.toLowerCase())){
         notAllowed('Not in word list')
-      } else if(guesses.includes(guessWord)) {
+      } else if(hardMode && guesses.includes(guessWord)) {
         notAllowed('Word already gussed')
       } else {
         setGuesses([...guesses, guessWord])
