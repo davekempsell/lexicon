@@ -191,8 +191,8 @@ body {
 }
 
 .key-wrong {
-  width: 30px;
-  height: 36px;
+  width: 100%;
+  height: 42px;
   font-size:small;;
   border-radius: 3px;
   padding: 0px;
@@ -205,8 +205,8 @@ body {
 }
 
 .key-close {
-  width: 30px;
-  height: 36px;
+  width: 100%;
+  height: 42px;
   font-size:small;
   border-radius: 3px;
   padding: 0px;
@@ -219,8 +219,8 @@ body {
 }
 
 .key-correct {
-  width: 30px;
-  height: 36px;
+  width: 100%;
+  height: 42px;
   font-size:small;
   border-radius: 3px;
   padding: 0px;
