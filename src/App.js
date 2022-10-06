@@ -37,9 +37,24 @@ function App() {
     }
   }
 
-  // Checking the selected letter is available to use in a guess
+  // Function to check if all letters revealed in previous guesses are being used in current guess (hardmode)
+  const guessChecker = (word) => {
+    let revealedLetters = Object.keys(letterState)
+      .filter(key => letterState[key] === 'correct' || letterState[key] === 'close')
+    
+    let missingLetters = []
+    revealedLetters.forEach(letter => {
+      if(!word.includes(letter)) {
+        missingLetters.push(letter)
+      }
+    })
+
+    return missingLetters
+  }
+
+  // Checking the selected letter is available to use in a guess (hard mode)
   const onKeyPress = key => {
-    if(letterState[key.target.value] === 'wrong') {
+    if(hardMode && letterState[key.target.value] === 'wrong') {
       notAllowed('Letter not in word')
     } else {
       inputLetter(key)
@@ -63,6 +78,7 @@ function App() {
   const keyboardSubmit = () => {
     let tempGuesses = guesses
     const guessWord = guessLetters.join("")
+    let missingLetters = guessChecker(guessWord)
     if(!endState && !winState) {
       if(guessLetters.length < 5) {
         notAllowed('Not enough letters')
@@ -70,6 +86,8 @@ function App() {
         notAllowed('Not in word list')
       } else if(hardMode && guesses.includes(guessWord)) {
         notAllowed('Word already gussed')
+      } else if(hardMode && missingLetters.length > 0) {
+        notAllowed('All clues must be used')
       } else {
         setGuesses([...guesses, guessWord])
         setEmptyGrids(emptyGrids.slice(0,-1))
@@ -143,7 +161,7 @@ function App() {
       {displayRulesPopUp()}
       <div className="title-container">
         <img src={Logo} className="logo" alt="logo"/>
-        <div className='title'>LEXICON</div>
+        <div className='title'>LEXICON {TargetWord}</div>
       </div>
       <div>
         {guesses.map((guess, index) => {
