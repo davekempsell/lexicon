@@ -1,4 +1,4 @@
-import linkedIn from '../linkedinlogo.png'
+import linkedIn from './linkedinlogo.png'
 
 function outcomeText(state, word) {
   if(state) {

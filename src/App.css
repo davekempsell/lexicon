@@ -132,25 +132,25 @@ body {
   margin-top: 20px;
   display: inline-grid;
   grid-template-columns: repeat(10, auto);
-  gap: 4px;
-  margin-bottom: 2px;
-  width: 90%;
+  gap: 6px;
+  margin-bottom: 4px;
+  width: 100%;
   
 }
 .keyboard-middle {
-  margin: 2px;
+  margin: 4px;
   display: inline-grid;
   grid-template-columns: repeat(9, auto);
-  gap: 4px;
-  width: 80%;
+  gap: 6px;
+  width: 90%;
 }
 .keyboard-bottom {
   margin-bottom: 20px;
   display: inline-grid;
   grid-template-columns: repeat(9, auto);
-  gap: 4px;
-  margin-top: 2px;
-  width: 90%;
+  gap: 6px;
+  margin-top: 4px;
+  width: 100%;
 }
 
 .typed-input {
@@ -180,7 +180,7 @@ body {
 .key-standard {
   width: 100%;
   height: 42px;
-  font-size:small;
+  font-size: medium;
   border-radius: 3px;
   padding: 0px;
   border-color: lightgray;
@@ -193,10 +193,10 @@ body {
 .key-wrong {
   width: 100%;
   height: 42px;
-  font-size:small;;
+  font-size: medium;
   border-radius: 3px;
   padding: 0px;
-  border-color: lightgray;
+  border-color: var(--wrong);
   background-color: var(--wrong);
   text-transform: uppercase;
   color: white;
@@ -207,10 +207,10 @@ body {
 .key-close {
   width: 100%;
   height: 42px;
-  font-size:small;
+  font-size: medium;
   border-radius: 3px;
   padding: 0px;
-  border-color: lightgray;
+  border-color: var(--close);
   background-color: var(--close);
   text-transform: uppercase;
   color: white;
@@ -221,10 +221,10 @@ body {
 .key-correct {
   width: 100%;
   height: 42px;
-  font-size:small;
+  font-size: medium;
   border-radius: 3px;
   padding: 0px;
-  border-color: lightgray;
+  border-color: var(--correct);
   background-color: var(--correct);
   text-transform: uppercase;
   color: white;
@@ -235,7 +235,7 @@ body {
 .key-action {
   width: 100%;
   height: 42px;
-  font-size: small;
+  font-size: medium;
   border-radius: 3px;
   padding: 1px;
   border-color: lightgray;
