@@ -24,6 +24,7 @@ function App() {
   const [letterState, setLetterState] = useState({})
   const [rulesMessage, setRulesMessage] = useState('')
   const [hardMode, setHardMode] = useState(false)
+  const [started, setStarted] = useState(false)
 
   // Function is run after each guess to check if the game has ended,
   // due to matching the target word, or running out of guesses.
@@ -83,6 +84,7 @@ function App() {
         tempGuesses.push(guessWord)
         checkOutcome(guessWord, tempGuesses)
         updateLetters(tempGuesses, setLetterState, TargetWord)
+        setStarted(true)
       }
     }
   }
@@ -133,7 +135,7 @@ function App() {
       {displayOutcomePopUp()}
       {displayRulesPopUp()}
       <div className='switch'>
-        {ToggleSwitch(setHardMode, hardMode)}
+        {ToggleSwitch(setHardMode, started, hardMode, notAllowed)}
         {hardModeLabel()}
       </div>
       <div className="title-container">
