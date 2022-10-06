@@ -43,11 +43,13 @@ function App() {
 
   // Checking the selected letter is available to use in a guess (hard mode)
   const onKeyPress = key => {
-    if(hardMode && letterState[key.target.value] === 'wrong') {
-      notAllowed('Letter not in word')
-    } else {
-      inputLetter(key)
-    } 
+    if(!infoState) {
+      if(hardMode && letterState[key.target.value] === 'wrong') {
+        notAllowed('Letter not in word')
+      } else {
+        inputLetter(key)
+      } 
+    }
   }
 
   // Inputting letters using the letter keys on the keyboard into the guessLetters array
@@ -60,7 +62,9 @@ function App() {
 
   // Removing the last letter from the guessLetters array, set on the Delete key
   const deleteLetter = () => {
-    setGuessLetters(guessLetters.slice(0,-1))
+    if(!infoState){
+      setGuessLetters(guessLetters.slice(0,-1))
+    }
   }
 
   // Submitting a guess for approval, set to the Enter key on the keyboard
@@ -70,7 +74,7 @@ function App() {
     const guessWord = guessLetters.join("")
     const missingLetters = guessChecker(guessWord, letterState)
     
-    if(!endState && !winState) {
+    if(!endState && !winState && !infoState) {
       if(guessLetters.length < 5) {
         notAllowed('Not enough letters')
       } else if(!allowedWords.includes(guessWord.toLowerCase())){
@@ -124,7 +128,7 @@ function App() {
   // Displaying the info popup if the ? is clicked
   const displayInfoPopUp = () => {
     if(infoState) {
-      return InfoPopUp(closeInfoPopUp)
+      return InfoPopUp(closeInfoPopUp, endState)
     }
   }
 
