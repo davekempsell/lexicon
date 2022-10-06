@@ -117,10 +117,13 @@ function App() {
     }
   }
 
-  const hardmodetest = () => {
+  const hardModeLabel = () => {
     if(hardMode) {
       return (
-        <p>HARDMODE ENGAGED</p>
+        <div className='hardmode'>
+          <p>HARD</p>
+          <p>MODE</p>
+        </div>
       )
     }
   }
@@ -129,9 +132,19 @@ function App() {
     <div className='main-container'>
       {displayOutcomePopUp()}
       {displayRulesPopUp()}
+      <div className='switch'>
+        {ToggleSwitch(setHardMode, hardMode)}
+        {hardModeLabel()}
+      </div>
       <div className="title-container">
         <img src={Logo} className="logo" alt="logo"/>
         <div className='title'>LEXICON {TargetWord}</div>
+      </div>
+      <div className='info'>
+        <button
+          className='info-button'
+          type="submit"
+        >?</button>
       </div>
       <div>
         {guesses.map((guess, index) => {
@@ -143,8 +156,6 @@ function App() {
         })}
       </div>
       {createKeyboard(onKeyPress, deleteLetter, submitGuess, letterState)}
-      {ToggleSwitch(setHardMode, hardMode)}
-      {hardmodetest()}
     </div>
   );
 }

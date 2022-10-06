@@ -17,7 +17,6 @@ body {
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: 10%;
 }
 
 .title-container {
@@ -314,4 +313,38 @@ body {
   font-size: small;
   font-weight: bold;
   animation: fade-in 1s
+}
+
+.switch {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 10px;
+}
+
+.hardmode {
+  position: absolute;
+  left: 0;
+  top: 0;
+  line-height: 1px;
+  margin-top: 30px;
+  margin-left: 16px;
+  padding: 0px;
+  font-size: small;
+  font-weight: bold;
+}
+
+.info {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.info-button {
+  margin: 10px;
+  font-size: large;
+  font-weight: bold;
+  border-style: solid;
+  border-radius: 15px;
+  background-color: white;
 }
