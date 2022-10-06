@@ -36,8 +36,8 @@ function ExampleGrid3() {
   )
 } 
 
-export function InfoPopUp(closePopUp, endState) {
-  if(!endState) {
+export function InfoPopUp(closePopUp, popUpState) {
+  if(!popUpState) {
     return (
       <div className="info-popup">
         <button 

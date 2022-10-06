@@ -128,13 +128,33 @@ function App() {
   // Displaying the info popup if the ? is clicked
   const displayInfoPopUp = () => {
     if(infoState) {
-      return InfoPopUp(closeInfoPopUp, endState)
+      return InfoPopUp(closeInfoPopUp, popUpState)
     }
   }
 
   // Function passed to the 'X' button in InfoPopUp component to remove popup from screen
   const closeInfoPopUp = () => {
     setInfoState(false)
+  }
+
+  // Info Button
+  const infoButton = () => {
+
+    const showInfo = () => {
+      if(!popUpState) {
+      setInfoState(true)
+      }
+    }
+
+    return (
+      <div className='info'>
+        <button
+          className='info-button'
+          type="submit"
+          onClick={showInfo}
+        >?</button>
+      </div>
+    )
   }
 
   return (
@@ -148,15 +168,9 @@ function App() {
       </div>
       <div className="title-container">
         <img src={Logo} className="logo" alt="logo"/>
-        <div className='title'>LEXICON</div>
+        <div className='title'>LEXICON {TargetWord}</div>
       </div>
-      <div className='info'>
-        <button
-          className='info-button'
-          type="submit"
-          onClick={setInfoState}
-        >?</button>
-      </div>
+      {infoButton()}
       <div>
         {guesses.map((guess, index) => {
           return GuessGrid(index, guess, TargetWord)
