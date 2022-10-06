@@ -168,7 +168,7 @@ function App() {
       </div>
       <div className="title-container">
         <img src={Logo} className="logo" alt="logo"/>
-        <div className='title'>LEXICON {TargetWord}</div>
+        <div className='title'>LEXICON</div>
       </div>
       {infoButton()}
       <div>
