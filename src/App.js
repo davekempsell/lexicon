@@ -10,7 +10,7 @@ import { createKeyboard } from './components/keyboard';
 import { PopUp } from './components/popups/outcomePopUp';
 import { rulesPopUp } from './components/popups/rulesPopUp';
 import ToggleSwitch from './components/ToggleSwitch/toggleSwitch';
-import { updateLetters, correctSetter, correctChecker, guessChecker } from './guessCheckers/guessCheckers';
+import { updateLetters, guessChecker } from './guessCheckers/guessCheckers';
 
 function App() {
   const TargetWord = targetWord
@@ -24,7 +24,6 @@ function App() {
   const [letterState, setLetterState] = useState({})
   const [rulesMessage, setRulesMessage] = useState('')
   const [hardMode, setHardMode] = useState(false)
-  const [correctLetters, setCorrectLetters] = useState(['?','?','?','?','?'])
 
   // Function is run after each guess to check if the game has ended,
   // due to matching the target word, or running out of guesses.
@@ -63,10 +62,11 @@ function App() {
 
   // Submitting a guess for approval, set to the Enter key on the keyboard
   const submitGuess = () => {
+    
     let tempGuesses = guesses
     const guessWord = guessLetters.join("")
     const missingLetters = guessChecker(guessWord, letterState)
-    const CorrectCheck = correctChecker(guessWord, correctLetters)
+    
     if(!endState && !winState) {
       if(guessLetters.length < 5) {
         notAllowed('Not enough letters')
@@ -76,8 +76,6 @@ function App() {
         notAllowed('Word already gussed')
       } else if(hardMode && missingLetters.length > 0) {
         notAllowed('All clues must be used')
-      } else if(hardMode && CorrectCheck > 0) {
-        notAllowed('Green in wrong place')
       } else {
         setGuesses([...guesses, guessWord])
         setEmptyGrids(emptyGrids.slice(0,-1))
@@ -85,15 +83,9 @@ function App() {
         tempGuesses.push(guessWord)
         checkOutcome(guessWord, tempGuesses)
         updateLetters(tempGuesses, setLetterState, TargetWord)
-        correctSetter(TargetWord, guessWord, correctLetters, setCorrectLetters)
       }
     }
   }
-
-  // Function to prevent close guesses being used in the same place in a subsequent guess
-  // const closeChecker = () => {
-
-  // }
 
 
   // Displaying the outcome popup once the end of the game is triggered
@@ -143,7 +135,7 @@ function App() {
       </div>
       <div>
         {guesses.map((guess, index) => {
-          return GuessGrid(index, guess, TargetWord, correctLetters, setCorrectLetters)
+          return GuessGrid(index, guess, TargetWord)
         })}
         {guessBoxes(guessLetters, winState, guesses)}
         {emptyGrids.map(n => {

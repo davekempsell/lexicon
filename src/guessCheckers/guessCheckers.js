@@ -18,29 +18,6 @@ export function updateLetters(array, callback, TargetWord) {
   callback(letters)
 }
 
-// Function to ensure correct guesses are used in the same place in subsequent guesses
-export function correctSetter (TargetWord, word, correctLetters, callback) {
-  const letters = correctLetters
-  word.split("").forEach((letter,index) => {
-    if(letter === TargetWord[index]) {
-      letters[index] = letter
-    }
-  })
-  callback(letters)
-}
-
-export function correctChecker(word, correctLetters) {
-  let letters = correctLetters
-  let guess = word.split("")
-  let check = 0
-  letters.forEach((letter, index) => {
-    if(letter !== '?' && letter !== guess[index]) {
-      check += 1
-    } 
-  })
-  return check
-}
-
 // Function to check if all letters revealed in previous guesses are being used in current guess (hardmode)
 export function guessChecker(word, letterState) {
   let revealedLetters = Object.keys(letterState)
