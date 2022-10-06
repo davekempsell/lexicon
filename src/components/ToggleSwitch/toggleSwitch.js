@@ -1,7 +1,18 @@
 import React, { useState } from "react";
 import './toggleSwitch.css'
 
-function ToggleSwitch(callback, started, hardMode, notAllowed) {
+export function hardModeLabel (hardMode) {
+  if(hardMode) {
+    return (
+      <div className='hardmode'>
+        <p>HARD</p>
+        <p>MODE</p>
+      </div>
+    )
+  }
+}
+
+export function ToggleSwitch(callback, started, hardMode, notAllowed) {
   const [isToggled, setIsToggled] = useState(false);
   const onToggle = () => {
     // Toggle switch can only be toggled on
@@ -22,4 +33,3 @@ function ToggleSwitch(callback, started, hardMode, notAllowed) {
     </label>
   );
 }
-export default ToggleSwitch;

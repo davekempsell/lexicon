@@ -9,7 +9,8 @@ import guessBoxes from './components/guessBoxes';
 import { createKeyboard } from './components/keyboard';
 import { PopUp } from './components/popups/outcomePopUp';
 import { rulesPopUp } from './components/popups/rulesPopUp';
-import ToggleSwitch from './components/ToggleSwitch/toggleSwitch';
+import { InfoPopUp } from './components/popups/infoPopUp';
+import { ToggleSwitch, hardModeLabel } from './components/ToggleSwitch/toggleSwitch';
 import { updateLetters, guessChecker } from './guessCheckers/guessCheckers';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
   const [rulesMessage, setRulesMessage] = useState('')
   const [hardMode, setHardMode] = useState(false)
   const [started, setStarted] = useState(false)
+  const [infoState, setInfoState] = useState(false)
 
   // Function is run after each guess to check if the game has ended,
   // due to matching the target word, or running out of guesses.
@@ -115,37 +117,40 @@ function App() {
   // Displays a message to inform the player which rule their guess goes against
   const displayRulesPopUp = () => {
     if(rulesState) {
-      return rulesPopUp(rulesMessage)
+      return rulesPopUp(rulesMessage, endState)
     }
   }
 
-  const hardModeLabel = () => {
-    if(hardMode) {
-      return (
-        <div className='hardmode'>
-          <p>HARD</p>
-          <p>MODE</p>
-        </div>
-      )
+  // Displaying the info popup if the ? is clicked
+  const displayInfoPopUp = () => {
+    if(infoState) {
+      return InfoPopUp(closeInfoPopUp)
     }
+  }
+
+  // Function passed to the 'X' button in InfoPopUp component to remove popup from screen
+  const closeInfoPopUp = () => {
+    setInfoState(false)
   }
 
   return (
     <div className='main-container'>
       {displayOutcomePopUp()}
       {displayRulesPopUp()}
+      {displayInfoPopUp()}
       <div className='switch'>
         {ToggleSwitch(setHardMode, started, hardMode, notAllowed)}
-        {hardModeLabel()}
+        {hardModeLabel(hardMode)}
       </div>
       <div className="title-container">
         <img src={Logo} className="logo" alt="logo"/>
-        <div className='title'>LEXICON {TargetWord}</div>
+        <div className='title'>LEXICON</div>
       </div>
       <div className='info'>
         <button
           className='info-button'
           type="submit"
+          onClick={setInfoState}
         >?</button>
       </div>
       <div>

@@ -340,6 +340,21 @@ body {
   top: 0;
 }
 
+.info-popup {
+  position: absolute;
+  margin-top: 80px;
+  z-index: 1;
+  border-color: black;
+  border-radius: 20px;
+  background-color: white;
+  border-color: black;
+  border-style: solid;
+  width: 350px;
+  height: 500px;
+  animation-name: fade-in;
+  animation-duration: 3s;
+}
+
 .info-button {
   margin: 10px;
   font-size: large;
@@ -347,4 +362,111 @@ body {
   border-style: solid;
   border-radius: 15px;
   background-color: white;
+}
+
+.info-box {
+  padding: 5px;
+}
+
+.how-to-play {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.instructions {
+  text-align: left;
+  font-size: medium;
+}
+
+.info-popup-jobstuff {
+  position: absolute;
+  text-align: center;
+  bottom: 5px;
+  width: 330px;
+  left: 10px;
+  font-style: italic;
+  font-size: small;
+}
+
+.examples {
+  margin-top: 5px;
+  font-size:small;
+  font-weight: bold;
+  text-align: left;
+  padding: 0px;
+
+}
+
+.example-box-empty {
+  width: 20px;
+  height: 20px;
+  border: 2px solid;
+  border-color: rgb(164, 164, 164);
+  display: grid;
+  place-items: center;
+  font-size: small;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: black
+}
+
+.example-box-correct {
+  width: 20px;
+  height: 20px;
+  border: 2px solid;
+  border-color: rgb(164, 164, 164);
+  display: grid;
+  place-items: center;
+  font-size: small;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  background-color: var(--correct);
+  animation-name: correctBox;
+  animation-duration: 6s;
+}
+
+.example-box-close {
+  width: 20px;
+  height: 20px;
+  border: 2px solid;
+  border-color: rgb(164, 164, 164);
+  display: grid;
+  place-items: center;
+  font-size: small;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  background-color: var(--close);
+  animation-name: closeBox;
+  animation-duration: 6s;
+}
+
+.example-box-wrong {
+  width: 20px;
+  height: 20px;
+  border: 2px solid;
+  border-color: rgb(164, 164, 164);
+  display: grid;
+  place-items: center;
+  font-size: small;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  background-color: var(--wrong);
+  animation-name: wrongBox;
+  animation-duration: 6s;
+}
+
+.grid-description {
+  display: flex;
+  justify-content: flex-start;
+  font-size: x-small;
+  gap: 10px;
+}
+
+.hardmode-instructions {
+  font-size: small;
+  font-weight: bold;
+  margin-top: 10px;
 }
