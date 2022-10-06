@@ -2,8 +2,9 @@ function GuessGrid(line, guess, TargetWord) {
 
   const guessArray = guess.split("")
   const targetArray = TargetWord.split("")
-  const count = {}
 
+  // Creating an object defining the instances of each letter in the Target Word
+  const count = {}
   for (const element of targetArray) {
     count[element] ? count[element] += 1 : count[element] = 1;
   }
@@ -11,6 +12,7 @@ function GuessGrid(line, guess, TargetWord) {
   return (
     <div key={`guessGrid-${line}`} className="grid">
       {guessArray.map((letter, index) => {
+        // returning a green box if the letter is in the same place as in the Target Word
         if(letter === TargetWord[index]) {
           count[letter] -= 1;
           return (

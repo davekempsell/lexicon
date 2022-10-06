@@ -23,6 +23,7 @@ function App() {
   const [letterState, setLetterState] = useState({})
   const [rulesMessage, setRulesMessage] = useState('')
   const [hardMode, setHardMode] = useState(false)
+  const [correctLetters, setCorrectLetters] = useState(['?','?','?','?','?'])
 
   // Function is run after each guess to check if the game has ended,
   // due to matching the target word, or running out of guesses.
@@ -35,21 +36,6 @@ function App() {
       setEndState(true)
       setPopUpState(true)
     }
-  }
-
-  // Function to check if all letters revealed in previous guesses are being used in current guess (hardmode)
-  const guessChecker = (word) => {
-    let revealedLetters = Object.keys(letterState)
-      .filter(key => letterState[key] === 'correct' || letterState[key] === 'close')
-    
-    let missingLetters = []
-    revealedLetters.forEach(letter => {
-      if(!word.includes(letter)) {
-        missingLetters.push(letter)
-      }
-    })
-
-    return missingLetters
   }
 
   // Checking the selected letter is available to use in a guess (hard mode)
@@ -78,7 +64,8 @@ function App() {
   const keyboardSubmit = () => {
     let tempGuesses = guesses
     const guessWord = guessLetters.join("")
-    let missingLetters = guessChecker(guessWord)
+    const missingLetters = guessChecker(guessWord)
+    const CorrectCheck = correctChecker(guessWord)
     if(!endState && !winState) {
       if(guessLetters.length < 5) {
         notAllowed('Not enough letters')
@@ -88,6 +75,8 @@ function App() {
         notAllowed('Word already gussed')
       } else if(hardMode && missingLetters.length > 0) {
         notAllowed('All clues must be used')
+      } else if(hardMode && CorrectCheck > 0) {
+        notAllowed('Green in wrong place')
       } else {
         setGuesses([...guesses, guessWord])
         setEmptyGrids(emptyGrids.slice(0,-1))
@@ -95,8 +84,52 @@ function App() {
         tempGuesses.push(guessWord)
         checkOutcome(guessWord, tempGuesses)
         updateLetters(tempGuesses)
+        correctSetter(guessWord)
       }
     }
+  }
+
+  // Function to prevent close guesses being used in the same place in a subsequent guess
+  // const closeChecker = () => {
+
+  // }
+
+  // Function to ensure correct guesses are used in the same place in subsequent guesses
+  const correctSetter = (word) => {
+    const letters = correctLetters
+    word.split("").forEach((letter,index) => {
+      if(letter === TargetWord[index]) {
+        letters[index] = letter
+      }
+    })
+    setCorrectLetters(letters)
+  }
+
+  const correctChecker = (word) => {
+    let letters = correctLetters
+    let guess = word.split("")
+    let check = 0
+    letters.forEach((letter, index) => {
+      if(letter !== '?' && letter !== guess[index]) {
+        check += 1
+      } 
+    })
+    return check
+  }
+
+  // Function to check if all letters revealed in previous guesses are being used in current guess (hardmode)
+  const guessChecker = (word) => {
+    let revealedLetters = Object.keys(letterState)
+      .filter(key => letterState[key] === 'correct' || letterState[key] === 'close')
+    
+    let missingLetters = []
+    revealedLetters.forEach(letter => {
+      if(!word.includes(letter)) {
+        missingLetters.push(letter)
+      }
+    })
+
+    return missingLetters
   }
   
   // Setting the status of each letter so as to set the correct colour on the corresponding key
@@ -165,7 +198,7 @@ function App() {
       </div>
       <div>
         {guesses.map((guess, index) => {
-          return GuessGrid(index, guess, TargetWord)
+          return GuessGrid(index, guess, TargetWord, correctLetters, setCorrectLetters)
         })}
         {guessBoxes(guessLetters, winState, guesses)}
         {emptyGrids.map(n => {
