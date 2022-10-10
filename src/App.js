@@ -10,7 +10,7 @@ import { createKeyboard } from './components/keyboard';
 import { PopUp } from './components/popups/outcomePopUp';
 import { rulesPopUp } from './components/popups/rulesPopUp';
 import { InfoPopUp } from './components/popups/infoPopUp';
-import { ToggleSwitch, hardModeLabel } from './components/ToggleSwitch/toggleSwitch';
+import { ToggleSwitch } from './components/ToggleSwitch/toggleSwitch';
 import { updateLetters, guessChecker } from './guessCheckers/guessCheckers';
 
 function App() {
@@ -165,7 +165,6 @@ function App() {
       {displayInfoPopUp()}
       <div className='switch'>
         {ToggleSwitch(setHardMode, started, hardMode, notAllowed)}
-        {hardModeLabel(hardMode)}
       </div>
       <div className="title-container">
         <img src={Logo} className="logo" alt="logo"/>
