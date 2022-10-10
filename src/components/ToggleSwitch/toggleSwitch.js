@@ -15,16 +15,13 @@ export function hardModeLabel (hardMode) {
 export function ToggleSwitch(callback, started, hardMode, notAllowed) {
   const [isToggled, setIsToggled] = useState(false);
   const onToggle = () => {
-    // Toggle switch can only be toggled on
+    // Toggle switch can only be used before game starts
     if(started) {
-      notAllowed('Must be on from start')
-    } else if(!isToggled) {
-      setIsToggled(true);
-      callback(true)
+      notAllowed("Can't change after guess")
+    } else {
+    setIsToggled(!isToggled);
+    callback(!hardMode)
     }
-    // Settings to toggle on and off
-    // setIsToggled(!isToggled);
-    // callback(!hardMode)
   }
   return (
     <label className="toggle-switch">
