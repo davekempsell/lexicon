@@ -140,6 +140,7 @@ function App() {
   // Info Button
   const infoButton = () => {
 
+    // Info pop up cannot be selected if the outcome pop up is on the screen
     const showInfo = () => {
       if(!popUpState) {
       setInfoState(true)
