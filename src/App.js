@@ -11,7 +11,7 @@ import { PopUp } from './components/popups/outcomePopUp';
 import { rulesPopUp } from './components/popups/rulesPopUp';
 import { InfoPopUp, infoButton } from './components/popups/infoPopUp';
 import { ToggleSwitch } from './components/ToggleSwitch/toggleSwitch';
-import { updateLetters, guessChecker, alreadyGuessed } from './guessCheckers/guessCheckers';
+import { updateLetters, guessChecker, alreadyGuessed, correctLetterCheck } from './guessCheckers/guessCheckers';
 import { lexiconLogic } from './guessCheckers/lexiconLogic'
 
 function App() {
@@ -64,13 +64,13 @@ function App() {
 
   // Submitting a guess for approval, set to the Enter key on the keyboard
   const submitGuess = () => {
-    console.log(`endstate: ${endState}`)
-    console.log(`popUpState: ${popUpState}`)
 
     const guessWord = guessLetters.join("")
     let wordGuessedAlready = alreadyGuessed(guesses, guessWord)
     const missingLetters = guessChecker(guessWord, letterState)
-    
+    const reuseGreen = correctLetterCheck(guesses, guessWord)
+    console.log(guesses)
+
     if(!endState && !winState && !infoState) {
       if(guessLetters.length < 5) {
         notAllowed('Not enough letters')
@@ -78,6 +78,8 @@ function App() {
         notAllowed('Not in word list')
       } else if(wordGuessedAlready) {
         notAllowed('Word already gussed')
+      } else if(hardMode && reuseGreen) {
+        notAllowed(reuseGreen)
       } else if(hardMode && missingLetters.length > 0) {
         notAllowed('All clues must be used')
       } else {
@@ -112,8 +114,6 @@ function App() {
     setPopUpState(false)
   }
 
-
-
   return (
     <div className='main-container'>
       {PopUp(closePopUp, winState, TargetWord, popUpState)}
@@ -124,7 +124,7 @@ function App() {
       </div>
       <div className="title-container">
         <img src={Logo} className="logo" alt="logo"/>
-        <div className='title'>LEXICON</div>
+        <div className='title'>LEXICON {TargetWord}</div>
       </div>
       {infoButton(popUpState, setInfoState)}
       <div>
