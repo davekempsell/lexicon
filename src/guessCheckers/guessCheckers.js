@@ -42,6 +42,7 @@ export function alreadyGuessed(guesses, guessWord) {
   return guessesWithLettersOnly.includes(guessWord)
 }
 
+// Function checks if guess includes a correct letter in the same place if already revealed
 export function correctLetterCheck(guesses, guessWord) {
   if(guesses.length > 0) {
     let lastGuess = guesses[guesses.length - 1]
@@ -59,6 +60,7 @@ export function correctLetterCheck(guesses, guessWord) {
   }
 }
 
+// Function checks that a close letter isn't used again in the same place after being revealed
 export function closeLetterCheck(guesses, guessWord) {
   if(guesses.length > 0) {
     let correctGuesses = []
@@ -69,9 +71,33 @@ export function closeLetterCheck(guesses, guessWord) {
         }
       })
     })
+
+    let closeGuesses = {
+      0: [],
+      1: [],
+      2: [],
+      3: [],
+      4: [],
+    }
+    guesses.forEach(guess => {
+      guess.forEach((letter, index) => {
+        if(letter.includes('?') && !correctGuesses.includes(letter[0])) {
+          closeGuesses[index].push(letter[0])
+        }
+      })
+    })
+
+    let guess = guessWord.split("")
+    let message = ''
+    guess.forEach((letter, index) => {
+      if(closeGuesses[index].includes(letter)) {
+        message = `${index + 1}${ordinals[index + 1]} letter can't be ${letter}`
+      }
+    })
+    return message
+  } else {
+    return ''
   }
-  
-  
 }
 
 const ordinals = {

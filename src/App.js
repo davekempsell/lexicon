@@ -11,7 +11,7 @@ import { PopUp } from './components/popups/outcomePopUp';
 import { rulesPopUp } from './components/popups/rulesPopUp';
 import { InfoPopUp, infoButton } from './components/popups/infoPopUp';
 import { ToggleSwitch } from './components/ToggleSwitch/toggleSwitch';
-import { updateLetters, guessChecker, alreadyGuessed, correctLetterCheck } from './guessCheckers/guessCheckers';
+import { updateLetters, guessChecker, alreadyGuessed, correctLetterCheck, closeLetterCheck } from './guessCheckers/guessCheckers';
 import { lexiconLogic } from './guessCheckers/lexiconLogic'
 
 function App() {
@@ -69,7 +69,7 @@ function App() {
     let wordGuessedAlready = alreadyGuessed(guesses, guessWord)
     const missingLetters = guessChecker(guessWord, letterState)
     const reuseGreen = correctLetterCheck(guesses, guessWord)
-    console.log(guesses)
+    const reuseYellow = closeLetterCheck(guesses, guessWord)
 
     if(!endState && !winState && !infoState) {
       if(guessLetters.length < 5) {
@@ -80,6 +80,8 @@ function App() {
         notAllowed('Word already gussed')
       } else if(hardMode && reuseGreen) {
         notAllowed(reuseGreen)
+      } else if(hardMode && reuseYellow) {
+        notAllowed(reuseYellow)
       } else if(hardMode && missingLetters.length > 0) {
         notAllowed('All clues must be used')
       } else {
@@ -124,7 +126,7 @@ function App() {
       </div>
       <div className="title-container">
         <img src={Logo} className="logo" alt="logo"/>
-        <div className='title'>LEXICON {TargetWord}</div>
+        <div className='title'>LEXICON</div>
       </div>
       {infoButton(popUpState, setInfoState)}
       <div>
