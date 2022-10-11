@@ -4,9 +4,13 @@ Lexicon is a word game, based on the popular NY Times game Wordle.
 
 Players are given six guesses to reveal the target word. After each guess, the colours of the tiles change to reveal whether that letter is in the word, and if it is, whether it is in the correct place. A new target word is randomly generated from a list of over 2700 every time the page is refreshed.
 
-Players can also turn on Hard Mode for an extra challenge. Hard Mode prevents letters from being used if they have been revealed to not be in the word, and all letters that are present in the word must be used in subsequent guesses. Once Hard Mode has been turned on and the game starts, it cannot be turned off!
+## Hard Mode
 
-[![Screenshot](LexiconScreenshot.png)](https://lexicon-by-dave.herokuapp.com/)
+The idea behind Lexicon was to make a version of the game where Hard Mode really meant Hard Mode. In the NY Times version, players can still use letters that have been revealed to not be in the word, as well as guess letters in a place in the word that has been revealed to be wrong. Lexicon fixes that, making for an even more challenging experience.
+
+Once a game is started in Hard Mode, it cannot be turned off!
+
+[![Screenshot](hardmodescreenshot.png)](https://lexicon-by-dave.herokuapp.com/)
 
 ## Tech
 
