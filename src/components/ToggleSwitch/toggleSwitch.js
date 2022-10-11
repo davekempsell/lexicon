@@ -6,7 +6,7 @@ export function ToggleSwitch(callback, started, hardMode, notAllowed) {
   const onToggle = () => {
     // Toggle switch can only be used before game starts
     if(started) {
-      notAllowed("Can't change after guess")
+      notAllowed("Can't change after start")
     } else {
     setIsToggled(!isToggled);
     callback(!hardMode)

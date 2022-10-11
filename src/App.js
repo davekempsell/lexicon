@@ -17,7 +17,7 @@ import { lexiconLogic } from './guessCheckers/lexiconLogic'
 function App() {
   const TargetWord = targetWord
   const [guesses, setGuesses]  = useState([])
-  const [emptyGrids, setEmptyGrids] = useState([2,3,4,5,6])
+  const [emptyGrids, setEmptyGrids] = useState([1,2,3,4,5])
   const [winState, setWinState] = useState(false)
   const [endState, setEndState] = useState(false)
   const [popUpState, setPopUpState] = useState(false)
@@ -31,12 +31,12 @@ function App() {
 
   // Function is run after each guess to check if the game has ended,
   // due to matching the target word, or running out of guesses.
-  const checkOutcome = (lastGuess, array) => {
-    if(lastGuess === TargetWord) {
+  const checkOutcome = (lastGuess) => {
+    if(lastGuess.join("") === TargetWord) {
       setEndState(true)
       setWinState(true)
       setPopUpState(true)
-    } else if(array.length > 5) {
+    } else if(guesses.length > 5) {
       setEndState(true)
       setPopUpState(true)
     }
@@ -64,8 +64,7 @@ function App() {
 
   // Submitting a guess for approval, set to the Enter key on the keyboard
   const submitGuess = () => {
-    
-    let tempGuesses = guesses
+
     const guessWord = guessLetters.join("")
     const missingLetters = guessChecker(guessWord, letterState)
     
@@ -84,8 +83,7 @@ function App() {
         setGuesses([...guesses, outcome])
         setEmptyGrids(emptyGrids.slice(0,-1))
         setGuessLetters([])
-        tempGuesses.push(guessWord)
-        checkOutcome(guessWord, tempGuesses)
+        checkOutcome(outcome)
         setStarted(true)
       }
     }
@@ -164,7 +162,7 @@ function App() {
       </div>
       <div className="title-container">
         <img src={Logo} className="logo" alt="logo"/>
-        <div className='title'>LEXICON</div>
+        <div className='title'>LEXICON {TargetWord}</div>
       </div>
       {infoButton()}
       <div>
