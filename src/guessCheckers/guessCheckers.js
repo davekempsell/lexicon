@@ -1,6 +1,5 @@
-
 // Setting the status of each letter so as to set the correct colour on the corresponding key
-export function updateLetters(array, callback, TargetWord) {
+export function updateLetters(array, setLetterState, TargetWord) {
   let letters = {}
   array.forEach(guess => {
     guess.split("").forEach((letter, index) => {
@@ -15,7 +14,7 @@ export function updateLetters(array, callback, TargetWord) {
       }
     })
   })
-  callback(letters)
+  setLetterState(letters)
 }
 
 // Function to check if all letters revealed in previous guesses are being used in current guess (hardmode)
