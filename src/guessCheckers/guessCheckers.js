@@ -1,18 +1,15 @@
 // Setting the status of each letter so as to set the correct colour on the corresponding key
-export function updateLetters(array, setLetterState, TargetWord) {
-  let letters = {}
-  array.forEach(guess => {
-    guess.split("").forEach((letter, index) => {
-      if(letter === TargetWord[index]) {
-        letters[letter] = 'correct'
-      } else if(TargetWord.includes(letter)) {
-        if(!letters[letter]) {
-          letters[letter] = 'close'
-        }
-      } else {
-        letters[letter] = 'wrong'
-      }
-    })
+
+export function updateLetters(guess, setLetterState, letterState) {
+  let letters = letterState
+  guess.forEach(letter => {
+    if(letter.includes('!')) {
+      letters[letter[0]] = 'wrong'
+    } else if(!letters[letter] && letter.includes('?')) {
+      letters[letter[0]] = 'close'
+    } else {
+      letters[letter] = 'correct'
+    }
   })
   setLetterState(letters)
 }

@@ -1,12 +1,8 @@
-import { lexiconLogic } from '../guessCheckers/lexiconLogic'
-
-function GuessGrid(line, guess, TargetWord) {
-
-  let outcome = lexiconLogic(guess, TargetWord)
+function GuessGrid(line, guess) {
 
   return (
     <div key={`guessGrid-${line}`} className="grid">
-      {outcome.map((letter, index) => {
+      {guess.map((letter, index) => {
         if(letter.includes('!')) {
           return (
             <div className="box-wrong" key={`guess-${index}`}>{letter[0]}</div>

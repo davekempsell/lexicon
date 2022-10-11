@@ -12,6 +12,7 @@ import { rulesPopUp } from './components/popups/rulesPopUp';
 import { InfoPopUp } from './components/popups/infoPopUp';
 import { ToggleSwitch } from './components/ToggleSwitch/toggleSwitch';
 import { updateLetters, guessChecker } from './guessCheckers/guessCheckers';
+import { lexiconLogic } from './guessCheckers/lexiconLogic'
 
 function App() {
   const TargetWord = targetWord
@@ -41,22 +42,16 @@ function App() {
     }
   }
 
-  // Checking the selected letter is available to use in a guess (hard mode)
+  // Inputting letters using the onscreen keyboard
+  // also, checking the selected letter is available to use in a guess (hard mode)
   const onKeyPress = key => {
     if(!infoState) {
       if(hardMode && letterState[key.target.value] === 'wrong') {
         notAllowed('Letter not in word')
-      } else {
-        inputLetter(key)
-      } 
-    }
-  }
-
-  // Inputting letters using the letter keys on the keyboard into the guessLetters array
-  const inputLetter = key => {
-    if(guessLetters.length < 5) {
-      const newGuessLetter = key.target.value
-      setGuessLetters([...guessLetters, newGuessLetter])
+      } else if(guessLetters.length < 5) {
+          const newGuessLetter = key.target.value
+          setGuessLetters([...guessLetters, newGuessLetter])
+      }
     }
   }
 
@@ -84,12 +79,13 @@ function App() {
       } else if(hardMode && missingLetters.length > 0) {
         notAllowed('All clues must be used')
       } else {
-        setGuesses([...guesses, guessWord])
+        let outcome = lexiconLogic(guessWord, TargetWord)
+        updateLetters(outcome, setLetterState, letterState)
+        setGuesses([...guesses, outcome])
         setEmptyGrids(emptyGrids.slice(0,-1))
         setGuessLetters([])
         tempGuesses.push(guessWord)
         checkOutcome(guessWord, tempGuesses)
-        updateLetters(tempGuesses, setLetterState, TargetWord)
         setStarted(true)
       }
     }
@@ -173,7 +169,7 @@ function App() {
       {infoButton()}
       <div>
         {guesses.map((guess, index) => {
-          return GuessGrid(index, guess, TargetWord)
+          return GuessGrid(index, guess)
         })}
         {guessBoxes(guessLetters, winState, guesses)}
         {emptyGrids.map(n => {
