@@ -1,17 +1,17 @@
-const keyboardKey = (style, index, letter, callback) => {
+const keyboardKey = (style, index, letter, onKeyPress) => {
   return (
     <button 
       className={style} 
       key={`keyboard-${index}`} 
       type="submit" 
       value={letter}
-      onClick={callback}>
+      onClick={onKeyPress}>
         {letter}
     </button>
   )
 }
 
-function KeyboardTop(callback, letterState) {
+function KeyboardTop(onKeyPress, letterState) {
 
   const keyValues = ['Q','W','E','R','T','Y','U','I','O','P']
 
@@ -19,20 +19,20 @@ function KeyboardTop(callback, letterState) {
     <div className="keyboard-top" key="keyboard-top">
       {keyValues.map((letter, index) => {
         if(letterState[letter] === 'correct') {
-          return keyboardKey("key-correct", index, letter, callback)
+          return keyboardKey("key-correct", index, letter, onKeyPress)
         } else if(letterState[letter] === 'close') {
-          return keyboardKey("key-close", index, letter, callback)
+          return keyboardKey("key-close", index, letter, onKeyPress)
         } else if(letterState[letter] === 'wrong') {
-          return keyboardKey("key-wrong", index, letter, callback)
+          return keyboardKey("key-wrong", index, letter, onKeyPress)
         } else {
-          return keyboardKey("key-standard", index, letter, callback)
+          return keyboardKey("key-standard", index, letter, onKeyPress)
         }
       })}
     </div>
   )
 }
 
-function KeyboardMiddle(callback, letterState) {
+function KeyboardMiddle(onKeyPress, letterState) {
 
   const keyValues = ['A','S','D','F','G','H','J','K','L']
 
@@ -40,20 +40,20 @@ function KeyboardMiddle(callback, letterState) {
     <div className="keyboard-middle">
       {keyValues.map((letter, index) => {
         if(letterState[letter] === 'correct') {
-          return keyboardKey("key-correct", index, letter, callback)
+          return keyboardKey("key-correct", index, letter, onKeyPress)
         } else if(letterState[letter] === 'close') {
-          return keyboardKey("key-close", index, letter, callback)
+          return keyboardKey("key-close", index, letter, onKeyPress)
         } else if(letterState[letter] === 'wrong') {
-          return keyboardKey("key-wrong", index, letter, callback)
+          return keyboardKey("key-wrong", index, letter, onKeyPress)
         } else {
-          return keyboardKey("key-standard", index, letter, callback)
+          return keyboardKey("key-standard", index, letter, onKeyPress)
         }
       })}
     </div>
   )
 }
 
-function KeyboardBottom(callback1, callback2, callback3, letterState) {
+function KeyboardBottom(onKeyPress, deleteLetter, submitGuess, letterState) {
 
   const keyValues = ['Z','X','C','V','B','N','M']
   return (
@@ -63,18 +63,18 @@ function KeyboardBottom(callback1, callback2, callback3, letterState) {
         key={`keyboard-Ent`} 
         type="submit" 
         value={'Ent'}
-        onClick={callback3}>
+        onClick={submitGuess}>
           Ent
       </button>
       {keyValues.map((letter, index) => {
         if(letterState[letter] === 'correct') {
-          return keyboardKey("key-correct", index, letter, callback1)
+          return keyboardKey("key-correct", index, letter, onKeyPress)
         } else if(letterState[letter] === 'close') {
-          return keyboardKey("key-close", index, letter, callback1)
+          return keyboardKey("key-close", index, letter, onKeyPress)
         } else if(letterState[letter] === 'wrong') {
-          return keyboardKey("key-wrong", index, letter, callback1)
+          return keyboardKey("key-wrong", index, letter, onKeyPress)
         } else {
-          return keyboardKey("key-standard", index, letter, callback1)
+          return keyboardKey("key-standard", index, letter, onKeyPress)
         }
       })}
       <button 
@@ -82,19 +82,19 @@ function KeyboardBottom(callback1, callback2, callback3, letterState) {
         key={`keyboard-del`} 
         type="submit" 
         value={'del'}
-        onClick={callback2}>
+        onClick={deleteLetter}>
           del
       </button>
     </div>
   )
 }
 
-export function createKeyboard (callback1, callback2, callback3, object) {
+export function createKeyboard (onKeyPress, deleteLetter, submitGuess, letterState) {
   return (
     <div className="keyboard-container">
-    {KeyboardTop(callback1, object)}
-    {KeyboardMiddle(callback1, object)}
-    {KeyboardBottom(callback1, callback2, callback3, object)}
+    {KeyboardTop(onKeyPress, letterState)}
+    {KeyboardMiddle(onKeyPress, letterState)}
+    {KeyboardBottom(onKeyPress, deleteLetter, submitGuess, letterState)}
   </div>
   )
 }

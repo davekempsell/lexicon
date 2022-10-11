@@ -9,7 +9,7 @@ import guessBoxes from './components/guessBoxes';
 import { createKeyboard } from './components/keyboard';
 import { PopUp } from './components/popups/outcomePopUp';
 import { rulesPopUp } from './components/popups/rulesPopUp';
-import { InfoPopUp } from './components/popups/infoPopUp';
+import { InfoPopUp, infoButton } from './components/popups/infoPopUp';
 import { ToggleSwitch } from './components/ToggleSwitch/toggleSwitch';
 import { updateLetters, guessChecker, alreadyGuessed } from './guessCheckers/guessCheckers';
 import { lexiconLogic } from './guessCheckers/lexiconLogic'
@@ -64,6 +64,8 @@ function App() {
 
   // Submitting a guess for approval, set to the Enter key on the keyboard
   const submitGuess = () => {
+    console.log(`endstate: ${endState}`)
+    console.log(`popUpState: ${popUpState}`)
 
     const guessWord = guessLetters.join("")
     let wordGuessedAlready = alreadyGuessed(guesses, guessWord)
@@ -90,19 +92,6 @@ function App() {
     }
   }
 
-
-  // Displaying the outcome popup once the end of the game is triggered
-  const displayOutcomePopUp = () => {
-    if(popUpState) {
-      return PopUp(closePopUp, winState, TargetWord)
-    }
-  }
-
-  // Function passed to the 'X' button in OutcomePopUp component to remove popup from screen
-  const closePopUp = () => {
-    setPopUpState(false)
-  }
-
   // Triggered when a rule is broken, setting what message to display to the player.
   // The message disappears after 2s due to the setTimeOut function 
   const notAllowed = (error) => {
@@ -113,51 +102,23 @@ function App() {
     }, 2000)
   }
 
-  // Displays a message to inform the player which rule their guess goes against
-  const displayRulesPopUp = () => {
-    if(rulesState) {
-      return rulesPopUp(rulesMessage, endState)
-    }
-  }
-
-  // Displaying the info popup if the ? is clicked
-  const displayInfoPopUp = () => {
-    if(infoState) {
-      return InfoPopUp(closeInfoPopUp, popUpState)
-    }
-  }
-
   // Function passed to the 'X' button in InfoPopUp component to remove popup from screen
   const closeInfoPopUp = () => {
     setInfoState(false)
   }
 
-  // Info Button
-  const infoButton = () => {
-
-    // Info pop up cannot be selected if the outcome pop up is on the screen
-    const showInfo = () => {
-      if(!popUpState) {
-      setInfoState(true)
-      }
-    }
-
-    return (
-      <div className='info'>
-        <button
-          className='info-button'
-          type="submit"
-          onClick={showInfo}
-        >?</button>
-      </div>
-    )
+  // Function passed to the 'X' button in OutcomePopUp component to remove popup from screen
+  const closePopUp = () => {
+    setPopUpState(false)
   }
+
+
 
   return (
     <div className='main-container'>
-      {displayOutcomePopUp()}
-      {displayRulesPopUp()}
-      {displayInfoPopUp()}
+      {PopUp(closePopUp, winState, TargetWord, popUpState)}
+      {InfoPopUp(closeInfoPopUp, popUpState, infoState)}
+      {rulesPopUp(rulesMessage, rulesState)}
       <div className='switch'>
         {ToggleSwitch(setHardMode, started, hardMode, notAllowed)}
       </div>
@@ -165,7 +126,7 @@ function App() {
         <img src={Logo} className="logo" alt="logo"/>
         <div className='title'>LEXICON</div>
       </div>
-      {infoButton()}
+      {infoButton(popUpState, setInfoState)}
       <div>
         {guesses.map((guess, index) => {
           return GuessGrid(index, guess)

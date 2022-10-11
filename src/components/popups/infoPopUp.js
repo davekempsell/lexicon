@@ -36,8 +36,8 @@ function ExampleGrid3() {
   )
 } 
 
-export function InfoPopUp(closePopUp, popUpState) {
-  if(!popUpState) {
+export function InfoPopUp(closePopUp, popUpState, infoState) {
+  if(infoState && !popUpState) {
     return (
       <div className="info-popup">
         <button 
@@ -86,4 +86,25 @@ export function InfoPopUp(closePopUp, popUpState) {
       </div>
     )
   }
+}
+
+  // Info Button
+export function infoButton(popUpState, setInfoState) {
+
+  // Info pop up cannot be selected if the outcome pop up is on the screen
+  const showInfo = () => {
+    if(!popUpState) {
+    setInfoState(true)
+    }
+  }
+
+  return (
+    <div className='info'>
+      <button
+        className='info-button'
+        type="submit"
+        onClick={showInfo}
+      >?</button>
+    </div>
+  )
 }

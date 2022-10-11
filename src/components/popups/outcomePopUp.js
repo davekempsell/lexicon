@@ -20,7 +20,8 @@ function outcomeText(state, word) {
   }
 }
 
-export function PopUp(callback, winState, TargetWord) {
+export function PopUp(callback, winState, TargetWord, popUpState) {
+  if(popUpState) {
   return (
     <div className="popup">
       <button 
@@ -43,4 +44,5 @@ export function PopUp(callback, winState, TargetWord) {
       </div>
     </div>
   )
+  }
 }
