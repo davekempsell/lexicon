@@ -28,3 +28,14 @@ export function guessChecker(word, letterState) {
 
   return missingLetters
 }
+
+// Function to check if guessWord has already been guessed before
+export function alreadyGuessed(guesses, guessWord) {
+  let guessesWithLettersOnly = guesses.map(word => {
+    return word.map(letter => {
+      return letter[0]
+    }).join("")
+  })
+
+  return guessesWithLettersOnly.includes(guessWord)
+}
